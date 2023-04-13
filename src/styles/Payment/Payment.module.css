@@ -1,6 +1,6 @@
 .container{
     margin: 100px auto;
-    width: 30vw;
+    width: 20vw;
     max-height: 70vh;
     background: rgba(0,0,0,0.6);
     box-shadow: inset 0px 0px 7px 0px rgba(0,0,0,0.8), 0px 0px 0px 1px rgba(255,255,255,0.05);
@@ -10,9 +10,11 @@
     color: white;
     display: grid;
     grid-auto-flow: row;
-    gap: 10px;
+    row-gap: 10px;
 }
 .header{
+    padding-top: 20px;
+    padding-bottom: 30px;
     font-size: 20px;
 }
 
@@ -43,10 +45,20 @@
     background-color: #463E37;
     font-weight: 600;
 }
-.payment{
+.payment {
     color: #DDC49D;
     margin: auto;
     cursor: pointer;
+}
+.payment tr{
+    display: grid;
+    width: 16vw;
+    grid-template-columns: auto auto 1fr auto;
+    grid-auto-flow: row;
+    margin-bottom: 10px;
+}
+.payment tr td{
+    margin: auto;
 }
 .payment_flag{
     margin: auto 5px auto 0;
