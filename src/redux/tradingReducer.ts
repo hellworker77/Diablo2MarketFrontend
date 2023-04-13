@@ -1,5 +1,6 @@
 import {TradingStateType} from "../types/reducerTypes/stateTypes/TradingStateType";
 import {ItemRarityEnum} from "../types/models/enums/ItemRarityEnum";
+import {GlobalTradingActionType} from "../types/reducerTypes/actionTypes/GlobalTradingActionType";
 
 
 let initialState : TradingStateType = {
@@ -24,8 +25,8 @@ let initialState : TradingStateType = {
     deals: []
 }
 
-const tradingReducer = (state = initialState, action: any) : TradingStateType => {
+const TradingReducer = (state = initialState, action: GlobalTradingActionType) : TradingStateType => {
     return state;
 }
 
-export default tradingReducer;
+export default TradingReducer;

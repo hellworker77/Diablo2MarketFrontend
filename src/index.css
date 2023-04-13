@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'UbuntuB';
+  font-weight: 500;
+  min-height: 100vh;
+  background: url("images/ui/bgtile.png");
 }
 
 code {
