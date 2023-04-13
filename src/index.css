@@ -10,7 +10,9 @@ body {
   min-height: 100vh;
   background: url("images/ui/bgtile.png");
 }
-
+body::-webkit-scrollbar{
+  display: none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

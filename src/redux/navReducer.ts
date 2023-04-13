@@ -15,6 +15,14 @@ let initialState: NavStateType = {
         {
             code: "EN",
             name: "English"
+        },
+        {
+            code: "DE",
+            name: "Deutsch"
+        },
+        {
+            code: "DA",
+            name: "Danish"
         }
     ],
     selectedLanguage: {

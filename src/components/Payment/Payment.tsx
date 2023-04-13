@@ -21,9 +21,8 @@ class Payment extends React.Component<PaymentProps> {
                                 {`${payment.value} ${payment.currency}`}
                             </td>
                             <td>
-                                You will get
                             </td>
-                            <td>
+                            <td style={{display:"flex"}}>
                                 {payment.receive}
                                 <img alt={"golddrop-icon"} src={goldDrop}></img>
                             </td>
