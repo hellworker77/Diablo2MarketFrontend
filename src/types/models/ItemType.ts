@@ -8,5 +8,6 @@ export type ItemType = {
     itemRarity: ItemRarityEnum,
     attributes?: Array<ItemAttributeType>,
     name: string,
-    ownerId: string
+    ownerId: string,
+    postedDate: Date
 }

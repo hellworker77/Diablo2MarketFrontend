@@ -1,0 +1,30 @@
+.container{
+    margin-top: 15px;
+    display: grid;
+    gap: 15px;
+    grid-template-rows: auto 1fr;
+}
+.header{
+    display: flex;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}
+.header img{
+    margin: auto 10px auto 0px;
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+.content{
+    color: #999;
+    float: left;
+    width: 100%;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid #000;
+    border-radius: 3px;
+    box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.7), 0px 0px 0px 1px rgba(255,255,255,0.05);
+}
+.item:nth-child(even){
+    background: rgba(0,0,0,0.5);
+}

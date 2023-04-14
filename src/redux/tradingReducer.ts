@@ -17,6 +17,82 @@ let initialState : TradingStateType = {
                     description: "Attr"
                 }
             ],
+            postedDate: new Date(Date.now()),
+            ownerId: "guid-text-id"
+        },
+        {
+            id: "guid-text-id",
+            price: 20,
+            name:"sword",
+            itemRarity: ItemRarityEnum.Common,
+            attributes: [
+                {
+                    id: "guid-text-id",
+                    name: "1 to All Skills",
+                    description: "Attr"
+                }
+            ],
+            postedDate: new Date(Date.now()),
+            ownerId: "guid-text-id"
+        },
+        {
+            id: "guid-text-id",
+            price: 20,
+            name:"sword",
+            itemRarity: ItemRarityEnum.Common,
+            attributes: [
+                {
+                    id: "guid-text-id",
+                    name: "1 to All Skills",
+                    description: "Attr"
+                }
+            ],
+            postedDate: new Date(Date.now()),
+            ownerId: "guid-text-id"
+        },
+        {
+            id: "guid-text-id",
+            price: 20,
+            name:"sword",
+            itemRarity: ItemRarityEnum.Common,
+            attributes: [
+                {
+                    id: "guid-text-id",
+                    name: "1 to All Skills",
+                    description: "Attr"
+                }
+            ],
+            postedDate: new Date(Date.now() - 2000000000),
+            ownerId: "guid-text-id"
+        },
+        {
+            id: "guid-text-id",
+            price: 20,
+            name:"sword",
+            itemRarity: ItemRarityEnum.Common,
+            attributes: [
+                {
+                    id: "guid-text-id",
+                    name: "1 to All Skills",
+                    description: "Attr"
+                }
+            ],
+            postedDate: new Date(Date.now()),
+            ownerId: "guid-text-id"
+        },
+        {
+            id: "guid-text-id",
+            price: 20,
+            name:"sword",
+            itemRarity: ItemRarityEnum.Common,
+            attributes: [
+                {
+                    id: "guid-text-id",
+                    name: "1 to All Skills",
+                    description: "Attr"
+                }
+            ],
+            postedDate: new Date(Date.now()),
             ownerId: "guid-text-id"
         }
     ],
