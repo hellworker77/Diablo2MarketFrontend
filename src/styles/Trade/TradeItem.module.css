@@ -1,0 +1,51 @@
+.container {
+    padding: 15px 10px 10px 10px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+    "b tp"
+    "b bp";
+    column-gap: 10px;
+    font-weight: 600;
+}
+
+.top_part {
+    grid-area: tp;
+    display: flex;
+}
+
+.bottom_part {
+    grid-area: bp;
+    display: flex;
+}
+
+.button {
+    grid-area: b;
+    display: flex;
+    cursor: pointer;
+}
+
+.button img {
+    margin: auto;
+    height: 20px;
+    opacity: 0.76;
+}
+
+.button img:hover {
+    opacity: 1;
+}
+
+.price {
+
+}
+
+.link {
+    color: #ecd2a8;
+    text-decoration: none;
+}
+
+.time {
+    margin-left: auto;
+    color: #84b7ff;
+    font-weight: 500;
+}
