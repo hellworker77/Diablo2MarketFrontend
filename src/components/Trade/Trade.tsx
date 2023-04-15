@@ -5,6 +5,9 @@ import tradeModule from "../../styles/Trade/Trade.module.css"
 import tradeHeaderIcon from "../../images/icons/holygrail.png"
 
 class Trade extends React.Component<TradeProps>{
+    componentDidMount() {
+
+    }
     render() {
         return (
             <div className={tradeModule.container}>

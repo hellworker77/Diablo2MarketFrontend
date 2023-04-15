@@ -1,0 +1,16 @@
+.TinyBoxContainer{
+    background: url("../images/ui/tt_tl_tiny_i_m_bb.webp") top left no-repeat,
+    url("../images/ui/tt_tr_tiny_i_m_bb.webp") top right no-repeat,
+    url("../images/ui/tt_bl_tiny_i_m_bb.webp") bottom left no-repeat,
+    url("../images/ui/tt_br_tiny_i_m_bb.webp") bottom right no-repeat,
+    url("../images/ui/tt_border_t_tiny_i.webp") top repeat-x,
+    url("../images/ui/tt_border_b_tiny_i.webp") bottom repeat-x,
+    url("../images/ui/tt_border_l_tiny_i.webp") left repeat-y,
+    url("../images/ui/tt_border_r_tiny_i.webp") right repeat-y,
+    url("../images/ui/bgtile_bl.png") repeat;
+    padding: 4px 10px;
+    color: #e7ffe9;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 5px;
+}

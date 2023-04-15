@@ -28,7 +28,7 @@
 .button img {
     margin: auto;
     height: 20px;
-    opacity: 0.76;
+    opacity: .87;
 }
 
 .button img:hover {
@@ -40,7 +40,7 @@
 }
 
 .link {
-    color: #ecd2a8;
+    color: #cfd0fe;
     text-decoration: none;
 }
 
