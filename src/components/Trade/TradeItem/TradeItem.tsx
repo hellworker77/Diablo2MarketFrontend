@@ -1,9 +1,11 @@
 import React from "react";
 import {TradeItemProps} from "../../../types/props/TradeItemProps";
 import tradeItemModule from "../../../styles/Trade/TradeItem.module.css"
+import uiModule from "../../../styles/Ui.module.css"
 import {NavLink} from "react-router-dom";
 import disabledIcon from "../../../images/icons/read.png"
 import enabledIcon from "../../../images/icons/skillcalc.png"
+import goldIcon from "../../../images/icons/golddrop.png"
 
 type expiredTimeType = {
     value: number,
@@ -25,7 +27,7 @@ class TradeItem extends React.Component<TradeItemProps>{
         timeHandlingArray.push({value: Math.floor(diffMilliSeconds / 1000 / 60 / 60 / 24 / 365) , name: "year"})
 
 
-        let result = timeHandlingArray.reverse().find(x=>x.value != 0);
+        let result = timeHandlingArray.reverse().find(x=>x.value !== 0);
 
         if(result === undefined){
             return "0 seconds ago";
@@ -46,14 +48,20 @@ class TradeItem extends React.Component<TradeItemProps>{
                 </div>
                 <div className={tradeItemModule.top_part}>
                     <div className={tradeItemModule.price}>
-                        {this.props.item.price}
+                        <div className={uiModule.TinyBoxContainer}>
+                            <div>{this.props.item.price}</div>
+                            <img alt={"icon"} src={goldIcon}></img>
+                        </div>
                     </div>
-                    <NavLink to={`/item/${this.props.item.id}`}
-                             className={tradeItemModule.link}>
+                    <NavLink to={`/ItemShow`}
+                             className={tradeItemModule.link}
+                             style={{margin:"auto 0 auto 10px"}}
+                             onClick={()=>{this.props.selectItemId(this.props.item.id)}}>
                         {this.props.item.name}
                     </NavLink>
                 </div>
-                <div className={tradeItemModule.bottom_part}>
+                <div className={tradeItemModule.bottom_part}
+                     style={{marginTop:"10px"}}>
                     <NavLink to={`/user/${this.props.item.ownerId}`}
                              className={tradeItemModule.link}>
                         dealer

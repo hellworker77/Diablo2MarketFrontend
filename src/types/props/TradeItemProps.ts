@@ -8,6 +8,7 @@ export type TradeItemPropsState = {
 }
 
 export type TradeItemPropsDispatch = {
+    selectItemId: (id: string) => void
 }
 
 export type TradeItemPropsOwn = {

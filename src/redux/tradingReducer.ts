@@ -1,6 +1,15 @@
 import {TradingStateType} from "../types/reducerTypes/stateTypes/TradingStateType";
 import {ItemRarityEnum} from "../types/models/enums/ItemRarityEnum";
 import {GlobalTradingActionType} from "../types/reducerTypes/actionTypes/GlobalTradingActionType";
+import {
+    SELECT_ITEM_ACTION_TYPE,
+    SelectItemActionType
+} from "../types/reducerTypes/actionTypes/Trading/selectItemActionType";
+import {ItemShowMode} from "../types/models/enums/ItemShowMode";
+import {
+    SELECT_ITEM_SHOW_MODE_ACTION_TYPE,
+    SelectItemShowModeActionType
+} from "../types/reducerTypes/actionTypes/Trading/SelectItemShowModeActionType";
 
 
 let initialState : TradingStateType = {
@@ -96,13 +105,37 @@ let initialState : TradingStateType = {
             ownerId: "guid-text-id"
         }
     ],
-    itemLoadedById: null,
-    dealLoadedById: null,
+    selectedItemId: "",
+    itemShowMode: ItemShowMode.View,
+    loadedItem: null,
     deals: []
 }
 
 const TradingReducer = (state = initialState, action: GlobalTradingActionType) : TradingStateType => {
-    return state;
+    switch (action.type){
+        case SELECT_ITEM_ACTION_TYPE:
+            return {
+                ...state,
+                selectedItemId: action.id
+            }
+        case SELECT_ITEM_SHOW_MODE_ACTION_TYPE:
+            return {
+                ...state,
+                itemShowMode: action.mode
+            }
+        default:
+            return {
+                ...state
+            }
+    }
 }
+
+export const selectItemActionCreate = (id: string) : SelectItemActionType =>({
+    type: SELECT_ITEM_ACTION_TYPE, id: id
+})
+
+export const selectItemShowModeActionCreate = (mode: ItemShowMode): SelectItemShowModeActionType => ({
+    type: SELECT_ITEM_SHOW_MODE_ACTION_TYPE, mode: mode
+})
 
 export default TradingReducer;
