@@ -5,11 +5,12 @@ export type DetailItemProps = DetailItemPropsState & DetailItemPropsDispatch
 
 
 export type DetailItemPropsState = {
-    item: ItemType,
-    mode: ItemShowMode
+    itemId: string,
+    mode: ItemShowMode,
+    loadedItem: ItemType | null
 }
 
 export type DetailItemPropsDispatch = {
-
+    loadItem : (item: ItemType) => void
 }
 

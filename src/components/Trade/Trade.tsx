@@ -3,9 +3,16 @@ import {TradeProps} from "../../types/props/TradeProps";
 import TradeItemContainer from "./TradeItem/TradeItemContainer";
 import tradeModule from "../../styles/Trade/Trade.module.css"
 import tradeHeaderIcon from "../../images/icons/holygrail.png"
+import {GetChunkRequestManager} from "../../utilities/RequestHandlerFactory/Trading/GetChunkRequestManager";
 
 class Trade extends React.Component<TradeProps>{
-    componentDidMount() {
+    async componentDidMount() {
+        let requestManager = new GetChunkRequestManager(0, 3);
+        let items = await requestManager.execute();
+
+        if(items !== undefined){
+            this.props.loadItems(items);
+        }
 
     }
     render() {

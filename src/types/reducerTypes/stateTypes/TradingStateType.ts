@@ -6,6 +6,6 @@ export type TradingStateType = {
     items: Array<ItemType>
     selectedItemId: string,
     itemShowMode: ItemShowMode,
-    loadedItem: ItemType | null
+    loadedItem: ItemType | null,
     deals: Array<DealType>
 }
