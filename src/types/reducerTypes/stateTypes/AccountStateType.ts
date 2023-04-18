@@ -1,9 +1,11 @@
 import {ApplicationUserType} from "../../models/ApplicationUserType";
-import {ProfileLoadMode} from "../../models/enums/ProfileLoadMode";
 
 export type AccountStateType = {
     isAuthorized: boolean
     me: ApplicationUserType | null
     loadedUser: ApplicationUserType | null
-    selectedUserId: string
+    selectedUserId: string,
+    name: string,
+    email: string,
+    password: string
 }

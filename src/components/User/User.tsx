@@ -3,6 +3,10 @@ import {ApplicationUserType} from "../../types/models/ApplicationUserType";
 import {GetUserByIdRequestManager} from "../../utilities/RequestHandlerFactory/Account/GetUserByIdRequestManager";
 import {UserProps} from "../../types/props/UserProps";
 import uiModule from "../../styles/Ui.module.css"
+import userModule from "../../styles/User/User.module.css"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSackDollar} from "@fortawesome/free-solid-svg-icons";
+
 
 class User extends React.Component<UserProps> {
     async componentDidMount() {
@@ -17,8 +21,18 @@ class User extends React.Component<UserProps> {
 
     render() {
         return (
-            <div>
-                {this.props.selectedUserId}
+            <div className={userModule.wrapper}>
+                <div className={`${uiModule.frame_brown} ${userModule.container}`} style={{width: "100%", aspectRatio:"1/1"}}>
+                    <div className={uiModule.preloader} style={{width: "100%", aspectRatio:"1/1"}}>
+
+                    </div>
+                </div>
+                <div className={`${uiModule.frame_brown} ${userModule.container}`}
+                     style={{margin:"0 auto auto 0", padding:"10px"}}>
+                    <div className={`${uiModule.header} ${uiModule.row_content_container}`}>
+                        <FontAwesomeIcon icon={faSackDollar}/> {this.props.loadedUser?.balance}
+                    </div>
+                </div>
             </div>
         )
     }

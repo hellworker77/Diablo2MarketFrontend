@@ -11,34 +11,31 @@ import {
     SELECT_USER_ID_ACTION_TYPE,
     SelectUserIdActionType
 } from "../types/reducerTypes/actionTypes/Account/SelectUserIdActionType";
+import {
+    UPDATE_NAME_ACTION_TYPE,
+    UpdateNameActionType
+} from "../types/reducerTypes/actionTypes/Account/UpdateNameActionType";
+import {
+    UPDATE_EMAIL_ACTION_TYPE,
+    UpdateEmailActionType
+} from "../types/reducerTypes/actionTypes/Account/UpdateEmailActionType";
+import {
+    UPDATE_PASSWORD_ACTION_TYPE,
+    UpdatePasswordActionType
+} from "../types/reducerTypes/actionTypes/Account/UpdatePasswordActionType";
 
 let initialState : AccountStateType = {
-    isAuthorized: true,
-    me: {
-        balance: 2403450,
-        profilePictures: []
-    },
-    loadedUser: {
-        balance: 20,
-        profilePictures: []
-    },
+    isAuthorized: false,
+    me: null,
+    loadedUser: null,
     selectedUserId: "",
+    name: "",
+    email: "",
+    password: ""
 }
 
 const AccountReducer = (state = initialState, action: GlobalAccountActionType) : AccountStateType => {
     switch (action.type){
-        case ADD_BALANCE_ACTION_TYPE:
-            let user = state.loadedUser;
-            if(user == null){
-                return {
-                    ...state
-                }
-            }
-            user.balance += action.increment;
-            return {
-                ...state,
-                loadedUser: {...user}
-            }
         case LOAD_USER_ACTION_TYPE:
             return {
                 ...state,
@@ -54,12 +51,39 @@ const AccountReducer = (state = initialState, action: GlobalAccountActionType) :
                 ...state,
                 selectedUserId: action.id
             }
+        case UPDATE_NAME_ACTION_TYPE:
+            return {
+                ...state,
+                name: action.name
+            }
+        case UPDATE_EMAIL_ACTION_TYPE:
+            return {
+                ...state,
+                email: action.email
+            }
+        case UPDATE_PASSWORD_ACTION_TYPE:
+            return {
+                ...state,
+                password: action.password
+            }
         default:
             return {
                 ...state
             }
     }
 }
+
+export const updateNameActionCreate = (name: string): UpdateNameActionType => ({
+    type: UPDATE_NAME_ACTION_TYPE, name: name
+})
+
+export const updateEmailActionCreate = (email: string): UpdateEmailActionType => ({
+    type: UPDATE_EMAIL_ACTION_TYPE, email: email
+})
+
+export const updatePasswordActionCreate = (password: string): UpdatePasswordActionType => ({
+    type: UPDATE_PASSWORD_ACTION_TYPE, password: password
+})
 
 export const selectUserIdActionCreate = (id: string) : SelectUserIdActionType => ({
     type: SELECT_USER_ID_ACTION_TYPE, id: id

@@ -1,3 +1,28 @@
+.input{
+    background: url("../images/ui/tt_tl_tiny_i_m_bb.webp") top left no-repeat,
+    url("../images/ui/tt_tr_tiny_i_m_bb.webp") top right no-repeat,
+    url("../images/ui/tt_bl_tiny_i_m_bb.webp") bottom left no-repeat,
+    url("../images/ui/tt_br_tiny_i_m_bb.webp") bottom right no-repeat,
+    url("../images/ui/tt_border_t_tiny_i.webp") top repeat-x,
+    url("../images/ui/tt_border_b_tiny_i.webp") bottom repeat-x,
+    url("../images/ui/tt_border_l_tiny_i.webp") left repeat-y,
+    url("../images/ui/tt_border_r_tiny_i.webp") right repeat-y,
+    rgba(0, 0, 0, 0.43);
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    color: #f0e7d8;
+    font-size: 16px;
+    opacity: .77;
+}
+.input:focus{
+    opacity: 1;
+}
+.input::placeholder{
+    color: #7D7161;
+}
+
+
 .tinyBoxContainer{
     background: url("../images/ui/tt_tl_tiny_i_m_bb.webp") top left no-repeat,
     url("../images/ui/tt_tr_tiny_i_m_bb.webp") top right no-repeat,
@@ -73,3 +98,4 @@
     color: #84b7ff;
     font-weight: 600;
 }
+

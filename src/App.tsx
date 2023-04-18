@@ -8,6 +8,7 @@ import ItemContainer from "./components/Item/ItemContainer";
 import RightSideBarContainer from "./components/RightSideBar/RightSideBarContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import UserContainer from "./components/User/UserContainer";
+import SignInContainer from "./components/SignIn/SignInContainer";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 </div>
                 <div className={appModule.content}>
                     <Routes>
+                        <Route key={"signIn"} path={"/login"} element={<SignInContainer/>}/>
                         <Route key={"user"} path={"/user"} element={<UserContainer/>}/>
                         <Route key={"profile"} path={"/profile"} element={<ProfileContainer/>}/>
                         <Route key={"payment"} path={"/payment"} element={<PaymentContainer/>}/>

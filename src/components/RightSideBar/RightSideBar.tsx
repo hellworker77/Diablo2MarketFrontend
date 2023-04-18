@@ -22,7 +22,9 @@ export class RightSideBar extends React.Component<RightSideBarProps> {
         return (
             <div className={uiModule.frame_brown}
                  style={{margin: "20px", padding: "10px"}}>
-                <div className={`${uiModule.header} ${uiModule.row_content_container}`}><FontAwesomeIcon icon={faCoins} />Last Deals</div>
+                <div className={`${uiModule.header} ${uiModule.row_content_container}`}>
+                    <FontAwesomeIcon icon={faCoins} />Last Deals
+                </div>
                 {this.props.last24Deals.map(deal =>
                     <DealContainer deal={deal}/>
                 )}
