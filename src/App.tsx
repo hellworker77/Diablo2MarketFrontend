@@ -5,6 +5,7 @@ import PaymentContainer from "./components/Payment/PaymentContainer";
 import TradeContainer from "./components/Trade/TradeContainer";
 import appModule from "./App.module.css"
 import DetailItemContainer from "./components/DetailItem/DetailItemContainer";
+import RightSideBarContainer from "./components/RightSideBar/RightSideBarContainer";
 
 function App() {
     return (
@@ -19,6 +20,9 @@ function App() {
                         <Route key={"trading"} path={"/trade"} element={<TradeContainer/>}/>
                         <Route key={"detailItem"} path={"/ItemShow"} element={<DetailItemContainer/>}/>
                     </Routes>
+                </div>
+                <div className={appModule.right}>
+                    <RightSideBarContainer />
                 </div>
             </div>
         </BrowserRouter>

@@ -1,5 +1,4 @@
 import {TradingStateType} from "../types/reducerTypes/stateTypes/TradingStateType";
-import {ItemRarityEnum} from "../types/models/enums/ItemRarityEnum";
 import {GlobalTradingActionType} from "../types/reducerTypes/actionTypes/GlobalTradingActionType";
 import {
     SELECT_ITEM_ACTION_TYPE,
@@ -16,35 +15,24 @@ import {
     LOAD_ITEMS_ACTION_TYPE,
     LoadItemsActionType
 } from "../types/reducerTypes/actionTypes/Trading/LoadItemsActionType";
+import {DealType} from "../types/models/DealType";
+import {
+    LOAD_LAST_24_HOURS_ACTION_TYPE,
+    LoadLast24HoursDealsActionType
+} from "../types/reducerTypes/actionTypes/Trading/LoadLast24HoursDealsActionType";
 
 
-let initialState : TradingStateType = {
-    items:[
-        {
-            id: "guid-text-id",
-            price: 20,
-            name:"sword",
-            rarity: ItemRarityEnum.Common,
-            attributes: [
-                {
-                    id: "guid-text-id",
-                    name: "1 to All Skills",
-                    description: "Attr"
-                }
-            ],
-            dealId: null,
-            postedDate: "2023-04-17T11:40:52.000977Z",
-            ownerId: "guid-text-id"
-        }
-    ],
+let initialState: TradingStateType = {
+    items: [],
     selectedItemId: "",
     itemShowMode: ItemShowMode.View,
     loadedItem: null,
+    last24deals: [],
     deals: []
 }
 
-const TradingReducer = (state = initialState, action: GlobalTradingActionType) : TradingStateType => {
-    switch (action.type){
+const TradingReducer = (state = initialState, action: GlobalTradingActionType): TradingStateType => {
+    switch (action.type) {
         case SELECT_ITEM_ACTION_TYPE:
             return {
                 ...state,
@@ -65,6 +53,11 @@ const TradingReducer = (state = initialState, action: GlobalTradingActionType) :
                 ...state,
                 items: [...action.items]
             }
+        case LOAD_LAST_24_HOURS_ACTION_TYPE:
+            return {
+                ...state,
+                last24deals: [...action.deals]
+            }
         default:
             return {
                 ...state
@@ -72,20 +65,24 @@ const TradingReducer = (state = initialState, action: GlobalTradingActionType) :
     }
 }
 
-export const loadItemsActionCreate = (items: Array<ItemType>) : LoadItemsActionType => ({
+export const loadItemsActionCreate = (items: Array<ItemType>): LoadItemsActionType => ({
     type: LOAD_ITEMS_ACTION_TYPE, items: items
 })
 
-export const loadItemActionCreate = (item: ItemType) : LoadItemActionType => ({
+export const loadItemActionCreate = (item: ItemType): LoadItemActionType => ({
     type: LOAD_ITEM_ACTION_TYPE, item: item
 })
 
-export const selectItemActionCreate = (id: string) : SelectItemActionType =>({
+export const selectItemActionCreate = (id: string): SelectItemActionType => ({
     type: SELECT_ITEM_ACTION_TYPE, id: id
 })
 
 export const selectItemShowModeActionCreate = (mode: ItemShowMode): SelectItemShowModeActionType => ({
     type: SELECT_ITEM_SHOW_MODE_ACTION_TYPE, mode: mode
+})
+
+export const loadLast24HoursDealsActionCreate = (deals: Array<DealType>): LoadLast24HoursDealsActionType => ({
+    type: LOAD_LAST_24_HOURS_ACTION_TYPE, deals: deals
 })
 
 export default TradingReducer;

@@ -1,8 +1,8 @@
 import React from 'react';
-import {PaymentProps} from "../../types/props/PaymentProps";
 import paymentModule from "../../styles/Payment/Payment.module.css"
-import uiModule from '../../styles/Ui.module.css'
-import goldDrop from "../../images/icons/golddrop.png"
+import uiModule from "../../styles/Ui.module.css"
+import moneyIcon from "../../images/icons/golddrop.png"
+import {PaymentProps} from "../../types/props/PaymentProps";
 
 class Payment extends React.Component<PaymentProps> {
     render() {
@@ -26,7 +26,7 @@ class Payment extends React.Component<PaymentProps> {
                             </td>
                             <td style={{display:"flex"}}>
                                 {payment.receive}
-                                <img alt={"golddrop-icon"} src={goldDrop}></img>
+                                <img alt={"golddrop-icon"} src={moneyIcon}></img>
                             </td>
                             <td>
 

@@ -1,6 +1,6 @@
 import {ItemRarityEnum} from "../types/models/enums/ItemRarityEnum";
 
-export const RarityToColorConverter = (rarity: ItemRarityEnum | undefined) : string =>{
+export const rarityToColorConverter = (rarity: ItemRarityEnum | undefined) : string =>{
     let color = "#B6B7B4";
 
     if(rarity === ItemRarityEnum.Magic) {
