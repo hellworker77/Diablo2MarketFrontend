@@ -8,5 +8,6 @@ export type TradePropsState = {
 }
 
 export type TradePropsDispatch = {
+    loadItems: (items: Array<ItemType>) => void
 }
 

@@ -6,6 +6,7 @@ import {NavLink} from "react-router-dom";
 import disabledIcon from "../../../images/icons/read.png"
 import enabledIcon from "../../../images/icons/skillcalc.png"
 import goldIcon from "../../../images/icons/golddrop.png"
+import {ItemShowMode} from "../../../types/models/enums/ItemShowMode";
 
 type expiredTimeType = {
     value: number,
@@ -13,8 +14,8 @@ type expiredTimeType = {
 }
 
 class TradeItem extends React.Component<TradeItemProps>{
-    getExpiresTime = (): string => {
-        let milliSeconds = this.props.item.postedDate.getTime()
+    private getExpiresTime = (): string => {
+        let milliSeconds = new Date(this.props.item.postedDate).getTime()
         let nowMilliSeconds = Date.now()
         let diffMilliSeconds = nowMilliSeconds - milliSeconds
 
@@ -56,7 +57,11 @@ class TradeItem extends React.Component<TradeItemProps>{
                     <NavLink to={`/ItemShow`}
                              className={tradeItemModule.link}
                              style={{margin:"auto 0 auto 10px"}}
-                             onClick={()=>{this.props.selectItemId(this.props.item.id)}}>
+                             onClick={()=>
+                             {
+                                 this.props.selectItemId(this.props.item.id)
+                                 this.props.changeItemShowMode(ItemShowMode.View)
+                             }}>
                         {this.props.item.name}
                     </NavLink>
                 </div>

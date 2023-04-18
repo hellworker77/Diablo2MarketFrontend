@@ -4,10 +4,10 @@ import {ItemAttributeType} from "./ItemAttributeType";
 export type ItemType = {
     id: string,
     price: number,
-    dealId?: string,
-    itemRarity: ItemRarityEnum,
-    attributes?: Array<ItemAttributeType>,
+    dealId: string | null,
+    rarity: ItemRarityEnum,
+    attributes: Array<ItemAttributeType>,
     name: string,
     ownerId: string,
-    postedDate: Date
+    postedDate: string
 }
