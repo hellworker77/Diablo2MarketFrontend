@@ -1,21 +1,21 @@
-import DetailItem from "./DetailItem";
+import Item from "./Item";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/store";
 import {GlobalTradingActionType} from "../../types/reducerTypes/actionTypes/GlobalTradingActionType";
 import {Dispatch} from "redux";
-import {DetailItemPropsDispatch, DetailItemPropsState} from "../../types/props/DetailItemProps";
+import {ItemPropsDispatch, ItemPropsState} from "../../types/props/ItemProps";
 import {ItemType} from "../../types/models/ItemType";
 import {loadItemActionCreate} from "../../redux/tradingReducer";
 
 
-let mapStateToProps = (state: AppStateType) : DetailItemPropsState => {
+let mapStateToProps = (state: AppStateType) : ItemPropsState => {
     return {
         itemId: state.tradingReducer.selectedItemId,
         mode: state.tradingReducer.itemShowMode,
         loadedItem: state.tradingReducer.loadedItem
     }
 }
-let mapDispatchToProps = (dispatch : Dispatch<GlobalTradingActionType>) : DetailItemPropsDispatch => {
+let mapDispatchToProps = (dispatch : Dispatch<GlobalTradingActionType>) : ItemPropsDispatch => {
     return {
         loadItem:(item: ItemType) => {
             dispatch(loadItemActionCreate(item))
@@ -24,6 +24,6 @@ let mapDispatchToProps = (dispatch : Dispatch<GlobalTradingActionType>) : Detail
 }
 
 
-let DetailItemContainer = connect(mapStateToProps, mapDispatchToProps)(DetailItem);
+let ItemContainer = connect(mapStateToProps, mapDispatchToProps)(Item);
 
-export default DetailItemContainer;
+export default ItemContainer;

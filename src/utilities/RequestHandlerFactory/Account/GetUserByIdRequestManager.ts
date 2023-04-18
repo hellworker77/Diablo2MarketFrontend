@@ -1,27 +1,26 @@
 import {BaseEndpoint} from "../BaseUrl";
 import axios, {AxiosRequestConfig} from "axios";
 import {ErrorHandler} from "../../ErrorHandlerFactory/ErrorHandler";
-import {DealType} from "../../../types/models/DealType";
+import {ApplicationUserType} from "../../../types/models/ApplicationUserType";
 
 
-const GetLast24HoursDealsEndpoint = BaseEndpoint + "Deal/last24HoursDeals"
+const GetUserByIdEndpoint = BaseEndpoint + "Account/id"
 
-type responseType = Array<DealType>
+type responseType = ApplicationUserType
+
 type requestParams = {
-    index: number,
-    size: number
+    userId: string
 }
 
-export class GetLast24HoursDealsRequestManager {
+export class GetUserByIdRequestManager {
     private _config: AxiosRequestConfig<responseType>;
 
     constructor(params: requestParams) {
         const config: AxiosRequestConfig = {
             method: "get",
-            url: GetLast24HoursDealsEndpoint,
+            url: GetUserByIdEndpoint,
             params: {
-                "index": params.index,
-                "size": params.size
+                "userId": params.userId
             }
         };
         this._config = config;

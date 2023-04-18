@@ -1,15 +1,15 @@
 import {DealType} from "../models/DealType";
 import {ItemShowMode} from "../models/enums/ItemShowMode";
 
-export type DealPanelProps = DealPanelPropsState & DealPanelPropsDispatch & DealPanelPropsOwn
+export type DealProps = DealPropsState & DealPropsDispatch & DealPropsOwn
 
-export type DealPanelPropsState = {}
+export type DealPropsState = {}
 
-export type DealPanelPropsDispatch = {
+export type DealPropsDispatch = {
     selectItemId: (id: string) => void
     changeItemShowMode: (mode: ItemShowMode) => void
 }
 
-export type DealPanelPropsOwn = {
+export type DealPropsOwn = {
     deal: DealType
 }

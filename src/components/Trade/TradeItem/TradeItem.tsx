@@ -39,7 +39,8 @@ class TradeItem extends React.Component<TradeItemProps>{
                 </div>
                 <div className={tradeItemModule.bottom_part}
                      style={{marginTop:"10px"}}>
-                    <NavLink to={`/user/${this.props.item.ownerId}`}
+                    <NavLink to={`/user`}
+                             onClick={()=>this.props.selectUserId(this.props.item.ownerId)}
                              className={tradeItemModule.link}>
                         dealer
                     </NavLink>

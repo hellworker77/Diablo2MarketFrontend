@@ -4,7 +4,7 @@ import {
     GetLast24HoursDealsRequestManager
 } from "../../utilities/RequestHandlerFactory/Trading/GetLast24HoursDealsRequestManager";
 import uiModule from "../../styles/Ui.module.css"
-import DealPanelContainer from "../DealPanel/DealPanelContainer";
+import DealContainer from "../Deal/DealContainer";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCoins} from "@fortawesome/free-solid-svg-icons";
 
@@ -24,7 +24,7 @@ export class RightSideBar extends React.Component<RightSideBarProps> {
                  style={{margin: "20px", padding: "10px"}}>
                 <div className={`${uiModule.header} ${uiModule.row_content_container}`}><FontAwesomeIcon icon={faCoins} />Last Deals</div>
                 {this.props.last24Deals.map(deal =>
-                    <DealPanelContainer deal={deal}/>
+                    <DealContainer deal={deal}/>
                 )}
             </div>
         )

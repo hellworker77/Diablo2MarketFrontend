@@ -1,6 +1,6 @@
 import React from "react";
 import {ItemAttributeProps} from "../../../types/props/ItemAttributeProps";
-import itemAttributeModule from "../../../styles/DetailItem/ItemAttribute.module.css"
+import itemAttributeModule from "../../../styles/Item/ItemAttribute.module.css"
 
 export class ItemAttribute extends React.Component<ItemAttributeProps>{
     render() {

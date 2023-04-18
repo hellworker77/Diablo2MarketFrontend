@@ -1,18 +1,18 @@
-import {DealPanelPropsDispatch, DealPanelPropsState} from "../../types/props/DealPanelProps";
+import {DealPropsDispatch, DealPropsState} from "../../types/props/DealProps";
 import {GlobalTradingActionType} from "../../types/reducerTypes/actionTypes/GlobalTradingActionType";
 import {AppStateType} from "../../redux/store";
 import {Dispatch} from "react";
-import DealPanel from "./DealPanel";
+import Deal from "./Deal";
 import {connect} from "react-redux";
 import {selectItemActionCreate, selectItemShowModeActionCreate} from "../../redux/tradingReducer";
 import {ItemShowMode} from "../../types/models/enums/ItemShowMode";
 
-let mapStateToProps = (state: AppStateType): DealPanelPropsState => {
+let mapStateToProps = (state: AppStateType): DealPropsState => {
     return {
         isAuthorized: state.accountReducer.isAuthorized
     }
 }
-let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType>): DealPanelPropsDispatch => {
+let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType>): DealPropsDispatch => {
     return {
         selectItemId: (id: string) => {
             dispatch(selectItemActionCreate(id))
@@ -24,6 +24,6 @@ let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType>): DealPane
 }
 
 
-let DealPanelContainer = connect(mapStateToProps, mapDispatchToProps)(DealPanel);
+let DealContainer = connect(mapStateToProps, mapDispatchToProps)(Deal);
 
-export default DealPanelContainer;
+export default DealContainer;
