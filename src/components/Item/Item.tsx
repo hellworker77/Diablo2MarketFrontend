@@ -1,13 +1,13 @@
 import React from "react";
-import {DetailItemProps} from "../../types/props/DetailItemProps";
+import {ItemProps} from "../../types/props/ItemProps";
 import {GetItemByIdRequestManager} from "../../utilities/RequestHandlerFactory/Trading/GetItemByIdRequestManager";
 import uiModule from '../../styles/Ui.module.css'
-import {RarityToColorConverter} from "../../utilities/RarityToColorConverter";
+import {rarityToColorConverter} from "../../utilities/rarityToColorConverter";
 import ItemAttributeContainer from "./ItemAttribute/ItemAttributeContainer";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
-export class DetailItem extends React.Component<DetailItemProps> {
+export class Item extends React.Component<ItemProps> {
     async componentDidMount() {
         let requestManager = new GetItemByIdRequestManager(this.props.itemId)
         let item = await requestManager.execute();
@@ -16,7 +16,6 @@ export class DetailItem extends React.Component<DetailItemProps> {
         }
 
     }
-
     render() {
         return (
             <div>
@@ -28,7 +27,7 @@ export class DetailItem extends React.Component<DetailItemProps> {
                     <div className={uiModule.preloader}
                          style={{width: "200px"}}>
                     </div>
-                    <div style={{color: RarityToColorConverter(this.props.loadedItem?.rarity), margin: "5px auto"}}>
+                    <div style={{color: rarityToColorConverter(this.props.loadedItem?.rarity), margin: "5px auto"}}>
                         {this.props.loadedItem?.name}
                     </div>
                     {
@@ -44,4 +43,4 @@ export class DetailItem extends React.Component<DetailItemProps> {
 }
 
 
-export default DetailItem;
+export default Item;

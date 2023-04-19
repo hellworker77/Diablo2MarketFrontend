@@ -14,3 +14,6 @@
 .nav{
     grid-area: n;
 }
+.right{
+    grid-area: r;
+}

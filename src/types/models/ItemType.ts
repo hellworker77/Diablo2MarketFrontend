@@ -9,5 +9,5 @@ export type ItemType = {
     attributes: Array<ItemAttributeType>,
     name: string,
     ownerId: string,
-    postedDate: string
+    postedDate: Date
 }

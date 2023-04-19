@@ -10,6 +10,7 @@ export type TradeItemPropsState = {
 
 export type TradeItemPropsDispatch = {
     selectItemId: (id: string) => void
+    selectUserId: (id: string) => void
     changeItemShowMode: (mode: ItemShowMode) => void
 }
 

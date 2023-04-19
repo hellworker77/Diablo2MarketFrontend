@@ -4,8 +4,9 @@ import {ItemShowMode} from "../../models/enums/ItemShowMode";
 
 export type TradingStateType = {
     items: Array<ItemType>
-    selectedItemId: string,
-    itemShowMode: ItemShowMode,
-    loadedItem: ItemType | null,
+    last24deals: Array<DealType>
+    selectedItemId: string
+    itemShowMode: ItemShowMode
+    loadedItem: ItemType | null
     deals: Array<DealType>
 }
