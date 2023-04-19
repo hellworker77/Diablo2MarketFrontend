@@ -7,10 +7,10 @@ import {faKey} from "@fortawesome/free-solid-svg-icons";
 class SignIn extends React.Component<SignInProps> {
     render() {
         return (
-            <div style={{display: "flex"}}>
-                <div className={uiModule.frame_gray}
-                     style={{padding: "15px"}}>
-                    <div style={{display: "grid", gridAutoFlow: "row", gap: "10px"}}>
+            <div style={{display: "flex", marginTop: "15vh"}}>
+                <div className={uiModule.frame_brown}
+                     style={{padding: "20px"}}>
+                    <div style={{display: "grid", gridAutoFlow: "row", gap: "20px"}}>
                         <div className={`${uiModule.header} ${uiModule.row_content_container}`}
                              style={{borderBottom: "1px solid black"}}>
                             <FontAwesomeIcon icon={faKey}/>Log In
