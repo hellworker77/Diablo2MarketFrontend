@@ -9,7 +9,6 @@ import {ItemShowMode} from "../../types/models/enums/ItemShowMode";
 
 let mapStateToProps = (state: AppStateType): DealPropsState => {
     return {
-        isAuthorized: state.accountReducer.isAuthorized
     }
 }
 let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType>): DealPropsDispatch => {

@@ -1,14 +1,15 @@
 import {AbstractHttpHandler} from "./AbstractHttpHandler";
 import {AxiosError} from "axios";
+import {NotificationProps, NotificationStatus} from "../../components/Notification/Notification";
 
 export class BadRequestHttpHandler extends AbstractHttpHandler{
-    protected fittedType = "ERR_BAD_REQUEST"
-    public handle = (error: AxiosError): void => {
-        console.log("404")
+    protected override fittedHttpCode = 400
+    public handle = (error: AxiosError): NotificationProps => {
+        return {status: NotificationStatus.Warning, message: error.message, isVisible: true}
     }
 
     public isHttpHandlerFor = (type: AxiosError): boolean => {
-        return type.code === this.fittedType;
+        return type.response?.request.status === this.fittedHttpCode;
     }
 
     public  static getInstance = () : AbstractHttpHandler => {

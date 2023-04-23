@@ -1,13 +1,15 @@
 import {AxiosError} from "axios";
+import {NotificationProps, NotificationStatus} from "../../components/Notification/Notification";
 
 export class AbstractHttpHandler{
-    protected fittedType: string = "Any"
+    protected fittedSource: string = "Any"
+    protected fittedHttpCode: number = -1
     protected static _instance : AbstractHttpHandler;
-    public isHttpHandlerFor = (type: AxiosError) : boolean => {
+    public isHttpHandlerFor = (type: AxiosError, sourceName: string) : boolean => {
         return false
     }
-    public handle = (error: AxiosError) : void =>{
-
+    public handle = (error: AxiosError) : NotificationProps =>{
+        return {status: NotificationStatus.None, isVisible: false, message: ""}
     }
     public  static getInstance = () : AbstractHttpHandler => {
         if(this._instance === undefined){

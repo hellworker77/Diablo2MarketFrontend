@@ -3,34 +3,6 @@
     padding-bottom: 30px;
     font-size: 20px;
 }
-
-.button{
-    margin: 10px auto;
-    width: 100px;
-    cursor: pointer;
-    border: 1px solid black;
-    border-radius: 2px;
-    height: 30px;
-    background-color: #3D3531;
-}
-.button_inner{
-    font-size: 16px;
-    height: 90%;
-    border-radius: 2px;
-    border-bottom: 1px solid black;
-    color: #e7ffe9;
-    display: flex;
-    justify-content: center;
-    background-color: #312B28;
-}
-
-.button:hover{
-    background-color: #231B16;
-}
-.button:hover .button_inner{
-    background-color: #463E37;
-    font-weight: 600;
-}
 .payment {
     color: #DDC49D;
     margin: auto;

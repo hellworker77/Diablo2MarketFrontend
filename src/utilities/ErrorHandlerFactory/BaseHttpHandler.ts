@@ -2,11 +2,7 @@ import {AbstractHttpHandler} from "./AbstractHttpHandler";
 import {AxiosError} from "axios";
 
 export class BaseHttpHandler extends AbstractHttpHandler{
-    public handle = (error: AxiosError): void => {
-        console.log(error.code)
-    }
-
-    public isHttpHandlerFor = (type: AxiosError): boolean => {
+    public isHttpHandlerFor = (type: AxiosError, sourceName: string): boolean => {
         return true;
     }
 

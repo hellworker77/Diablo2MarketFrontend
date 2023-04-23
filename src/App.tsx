@@ -9,6 +9,7 @@ import RightSideBarContainer from "./components/RightSideBar/RightSideBarContain
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import UserContainer from "./components/User/UserContainer";
 import SignInContainer from "./components/SignIn/SignInContainer";
+import SignUpContainer from "./components/SignUp/SignUpContainer";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 </div>
                 <div className={appModule.content}>
                     <Routes>
+                        <Route key={"signUp"} path={"/register"} element={<SignUpContainer/>}/>
                         <Route key={"signIn"} path={"/login"} element={<SignInContainer/>}/>
                         <Route key={"user"} path={"/user"} element={<UserContainer/>}/>
                         <Route key={"profile"} path={"/profile"} element={<ProfileContainer/>}/>

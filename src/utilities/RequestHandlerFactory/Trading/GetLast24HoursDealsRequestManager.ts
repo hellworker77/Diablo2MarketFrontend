@@ -1,6 +1,5 @@
 import {BaseEndpoint} from "../BaseUrl";
 import axios, {AxiosRequestConfig} from "axios";
-import {ErrorHandler} from "../../ErrorHandlerFactory/ErrorHandler";
 import {DealType} from "../../../types/models/DealType";
 
 
@@ -27,13 +26,10 @@ export class GetLast24HoursDealsRequestManager {
         this._config = config;
     }
 
-    public execute = (): Promise<responseType | void> => {
-        let deals: responseType;
-        let errorHandler = ErrorHandler.getInstance();
-
+    public execute = (): Promise<responseType> => {
         return axios<responseType>(this._config)
-            .then(response => deals = response.data)
-            .catch(error => errorHandler.handle(error))
+            .then(response => {return response.data as responseType})
+            .catch();
 
     }
 }

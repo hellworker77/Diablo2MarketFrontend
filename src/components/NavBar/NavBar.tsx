@@ -9,13 +9,23 @@ import {faSignIn, faSignOut} from "@fortawesome/free-solid-svg-icons";
 import lastDealsIcon from "../../images/icons/lightradius.png"
 import tradeIcon from "../../images/icons/diadem_ticon.png"
 import profileIcon from "../../images/icons/chgact.png"
+import {GetMeRequestManager} from "../../utilities/RequestHandlerFactory/Account/GetMeRequestManager";
 
 class NavBar extends React.Component<NavBarProps> {
+    async componentDidUpdate(prevProps: Readonly<NavBarProps>, prevState: Readonly<{}>, snapshot?: any) {
+        if(prevProps.token === null && this.props.token !== null){
+            let requestManager = new GetMeRequestManager(this.props.token);
+
+            let me = await requestManager.execute();
+            this.props.loadMe(me);
+        }
+    }
+
     render() {
         return (
             <div className={navBarModule.container}>
                 <div className={navBarModule.content}>
-                    {this.props.isAuthorized?
+                    {this.props.token?
                         <NavLink className={navBarModule.button}
                                  to={"/profile"}>
                             <img alt={"icon"} src={profileIcon}></img>
@@ -33,12 +43,12 @@ class NavBar extends React.Component<NavBarProps> {
                         Last Deals
                     </NavLink>
                     <div></div>
-                    {this.props.isAuthorized?<BalancerContainer />:<div></div>}
-                    {this.props.isAuthorized?<NavLink to={"/logout"}
+                    {this.props.token?<BalancerContainer />:<div></div>}
+                    {this.props.token?<NavLink to={"/logout"}
                                                       className={navBarModule.button}>
                         <FontAwesomeIcon icon={faSignOut}/>
                     </NavLink>:<div></div>}
-                    {this.props.isAuthorized?<div></div>:
+                    {this.props.token?<div></div>:
                         <NavLink
                         to={"/login"}
                         className={navBarModule.button}>

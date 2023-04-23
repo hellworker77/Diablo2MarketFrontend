@@ -1,23 +1,27 @@
 import {BaseHttpHandler} from "./BaseHttpHandler";
 import {AbstractHttpHandler} from "./AbstractHttpHandler";
 import {BadRequestHttpHandler} from "./BadRequestHttpHandler";
+import {AxiosError} from "axios";
+import {WrongSignInDataHttpHandler} from "./WrongSignInDataHttpHandler";
+import {NotificationProps} from "../../components/Notification/Notification";
 
 export class ErrorHandler{
     private readonly _handlers: Array<AbstractHttpHandler>
     private static _instance: ErrorHandler;
     constructor() {
         this._handlers = [
+            WrongSignInDataHttpHandler.getInstance(),
             BadRequestHttpHandler.getInstance(),
             BaseHttpHandler.getInstance()
         ];
     }
-    private _getHttpHandler = (error: any): AbstractHttpHandler => {
-        return this._handlers.find(x=>x.isHttpHandlerFor(error))!
+    private _getHttpHandler = (error: AxiosError, sourceName: string): AbstractHttpHandler => {
+        return this._handlers.find(x=>x.isHttpHandlerFor(error, sourceName))!
     }
-    public handle = (error: any) : void => {
-        let httpHandler = this._getHttpHandler(error)
+    public execute = (error: AxiosError, sourceName: string) : NotificationProps => {
+        let httpHandler = this._getHttpHandler(error, sourceName)
 
-        httpHandler.handle(error);
+        return  httpHandler.handle(error);
     }
     public static getInstance = () : ErrorHandler => {
         if(this._instance === undefined){

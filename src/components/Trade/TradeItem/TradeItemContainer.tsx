@@ -11,7 +11,7 @@ import {GlobalAccountActionType} from "../../../types/reducerTypes/actionTypes/G
 
 let mapStateToProps = (state: AppStateType): TradeItemPropsState => {
     return {
-        isAuthorized: state.accountReducer.isAuthorized
+        token: state.accountReducer.token
     }
 }
 let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType | GlobalAccountActionType>): TradeItemPropsDispatch => {
