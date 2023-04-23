@@ -1,32 +1,33 @@
 import {BaseEndpoint} from "../BaseUrl";
 import axios, {AxiosRequestConfig} from "axios";
 import {ItemType} from "../../../types/models/ItemType";
-import {ErrorHandler} from "../../ErrorHandlerFactory/ErrorHandler";
 
 
 const GetItemByIdEndpoint = BaseEndpoint + "Item/id"
 
-export class GetItemByIdRequestManager {
-    private _config: AxiosRequestConfig<ItemType>;
+type responseType = ItemType;
+type requestParams = {
+    itemId: string
+}
 
-    constructor(itemId: string) {
+
+export class GetItemByIdRequestManager {
+    private _config: AxiosRequestConfig<responseType>;
+
+    constructor(params: requestParams) {
         const config: AxiosRequestConfig = {
             method: "get",
             url: GetItemByIdEndpoint,
             params: {
-                'itemId': itemId
+                'itemId': params.itemId
             }
         };
         this._config = config;
     }
 
-    public execute = (): Promise<ItemType | void> => {
-        let item: ItemType;
-        let errorHandler = ErrorHandler.getInstance();
-
-        return axios<ItemType>(this._config)
-            .then(response => item = response.data)
-            .catch(error => errorHandler.handle(error))
-
+    public execute = (): Promise<responseType> => {
+        return axios<responseType>(this._config)
+            .then(response => {return response.data as responseType})
+            .catch();
     }
 }

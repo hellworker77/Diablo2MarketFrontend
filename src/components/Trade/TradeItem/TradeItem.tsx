@@ -17,7 +17,7 @@ class TradeItem extends React.Component<TradeItemProps>{
             <div className={tradeItemModule.container}>
                 <div className={tradeItemModule.button}>
                     <img alt={"icon"}
-                         src={this.props.isAuthorized?enabledIcon:disabledIcon}/>
+                         src={this.props.token?enabledIcon:disabledIcon}/>
                 </div>
                 <div className={tradeItemModule.top_part}>
                     <div className={tradeItemModule.price}>

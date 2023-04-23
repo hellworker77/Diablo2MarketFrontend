@@ -26,7 +26,7 @@ export class RightSideBar extends React.Component<RightSideBarProps> {
                     <FontAwesomeIcon icon={faCoins} />Last Deals
                 </div>
                 {this.props.last24Deals.map(deal =>
-                    <DealContainer deal={deal}/>
+                    <DealContainer key={deal.id} deal={deal}/>
                 )}
             </div>
         )

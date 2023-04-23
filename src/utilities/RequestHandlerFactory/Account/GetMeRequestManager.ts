@@ -1,26 +1,23 @@
 import {BaseEndpoint} from "../BaseUrl";
 import axios, {AxiosRequestConfig} from "axios";
-import {ItemType} from "../../../types/models/ItemType";
+import {ApplicationUserType} from "../../../types/models/ApplicationUserType";
+import {Token} from "../../TokenManager";
 
 
-const GetChunkEndpoint = BaseEndpoint + "Item/chunk"
+const GetMeEndpoint = BaseEndpoint + "Account/me"
 
-type responseType = Array<ItemType>;
-type requestParams = {
-    index: number,
-    size: number
-}
+type responseType = ApplicationUserType
 
-export class GetChunkRequestManager{
+export class GetMeRequestManager {
     private _config: AxiosRequestConfig<responseType>;
 
-    constructor(params: requestParams) {
+    constructor(token: Token) {
+
         const config: AxiosRequestConfig = {
             method: "get",
-            url: GetChunkEndpoint,
-            params: {
-                'index': params.index,
-                'size': params.size
+            url: GetMeEndpoint,
+            headers:{
+                "Authorization":`${token.token_type} ${token.access_token}`
             }
         };
         this._config = config;

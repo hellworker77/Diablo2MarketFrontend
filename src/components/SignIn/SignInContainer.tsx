@@ -4,12 +4,16 @@ import {connect} from "react-redux";
 import SignIn from "./SignIn";
 import {SignInPropsDispatch, SignInPropsState} from "../../types/props/SignInProps";
 import {GlobalAccountActionType} from "../../types/reducerTypes/actionTypes/GlobalAccountActionType";
-import {updateEmailActionCreate, updateNameActionCreate, updatePasswordActionCreate} from "../../redux/accountReducer";
+import {
+    loadAccountTokenActionCreate,
+    updateNameActionCreate,
+    updatePasswordActionCreate
+} from "../../redux/accountReducer";
+import {Token} from "../../utilities/TokenManager";
 
 let mapStateToProps = (state: AppStateType): SignInPropsState => {
     return {
         name: state.accountReducer.name,
-        email: state.accountReducer.email,
         password: state.accountReducer.password
     }
 }
@@ -19,11 +23,11 @@ let mapDispatchToProps = (dispatch: Dispatch<GlobalAccountActionType>): SignInPr
         updateName: (name: string) => {
             dispatch(updateNameActionCreate(name))
         },
-        updateEmail: (email: string) => {
-            dispatch(updateEmailActionCreate(email))
-        },
         updatePassword: (password: string) => {
             dispatch(updatePasswordActionCreate(password))
+        },
+        loadAccountToken: (token: Token) => {
+            dispatch(loadAccountTokenActionCreate(token))
         }
     }
 }

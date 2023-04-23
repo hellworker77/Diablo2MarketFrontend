@@ -4,17 +4,21 @@ import {Dispatch} from "redux";
 import NavBar from "./NavBar";
 import {NavBarPropsDispatch, NavBarPropsState} from "../../types/props/NavBarProps";
 import {GlobalNavActionType} from "../../types/reducerTypes/actionTypes/GlobalNavActionType";
+import {GlobalAccountActionType} from "../../types/reducerTypes/actionTypes/GlobalAccountActionType";
+import {loadMeActionCreate, updateNameActionCreate} from "../../redux/accountReducer";
+import {ApplicationUserType} from "../../types/models/ApplicationUserType";
 
 
-
-
-let mapStateToProps = (state: AppStateType) : NavBarPropsState => {
+let mapStateToProps = (state: AppStateType): NavBarPropsState => {
     return {
-        isAuthorized: state.accountReducer.isAuthorized
+        token: state.accountReducer.token
     }
 }
-let mapDispatchToProps = (dispatch : Dispatch<GlobalNavActionType>) : NavBarPropsDispatch => {
+let mapDispatchToProps = (dispatch: Dispatch<GlobalNavActionType | GlobalAccountActionType>): NavBarPropsDispatch => {
     return {
+        loadMe: (me: ApplicationUserType) => {
+            dispatch(loadMeActionCreate(me))
+        }
     }
 }
 

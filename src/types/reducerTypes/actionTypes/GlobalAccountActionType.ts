@@ -5,6 +5,8 @@ import {SelectUserIdActionType} from "./Account/SelectUserIdActionType";
 import {UpdateNameActionType} from "./Account/UpdateNameActionType";
 import {UpdateEmailActionType} from "./Account/UpdateEmailActionType";
 import {UpdatePasswordActionType} from "./Account/UpdatePasswordActionType";
+import {LoadAccountTokenActionType} from "./Account/LoadAccountTokenActionType";
+import {UpdateVerifyPasswordActionType} from "./Account/UpdateVerifyPasswordActionType";
 
 export type GlobalAccountActionType = AddBalanceActionType |
     LoadUserActionType |
@@ -12,4 +14,6 @@ export type GlobalAccountActionType = AddBalanceActionType |
     SelectUserIdActionType |
     UpdateNameActionType |
     UpdateEmailActionType |
-    UpdatePasswordActionType
+    UpdatePasswordActionType |
+    UpdateVerifyPasswordActionType |
+    LoadAccountTokenActionType

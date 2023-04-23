@@ -34,9 +34,9 @@ class Payment extends React.Component<PaymentProps> {
                         </tr>
                     )}
                 </table>
-                <div className={paymentModule.button}>
-                    <div className={paymentModule.button_inner}>
-                        <div style={{margin: "auto"}}>Pay!</div>
+                <div className={uiModule.button}>
+                    <div className={uiModule.brown}>
+                        <div style={{margin: "auto 20px"}}>Pay!</div>
                     </div>
                 </div>
             </div>

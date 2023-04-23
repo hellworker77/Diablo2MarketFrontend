@@ -1,6 +1,5 @@
 import {BaseEndpoint} from "../BaseUrl";
 import axios, {AxiosRequestConfig} from "axios";
-import {ErrorHandler} from "../../ErrorHandlerFactory/ErrorHandler";
 import {ApplicationUserType} from "../../../types/models/ApplicationUserType";
 
 
@@ -27,12 +26,9 @@ export class GetUserByIdRequestManager {
     }
 
     public execute = (): Promise<responseType | void> => {
-        let deals: responseType;
-        let errorHandler = ErrorHandler.getInstance();
-
         return axios<responseType>(this._config)
-            .then(response => deals = response.data)
-            .catch(error => errorHandler.handle(error))
+            .then(response => {return response.data as responseType})
+            .catch();
 
     }
 }

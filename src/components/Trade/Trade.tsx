@@ -7,7 +7,7 @@ import {GetChunkRequestManager} from "../../utilities/RequestHandlerFactory/Trad
 
 class Trade extends React.Component<TradeProps>{
     async componentDidMount() {
-        let requestManager = new GetChunkRequestManager(0, 3);
+        let requestManager = new GetChunkRequestManager({index: 0, size: 3});
         let items = await requestManager.execute();
 
         if(items !== undefined){

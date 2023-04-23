@@ -1,11 +1,12 @@
 import {ItemType} from "../models/ItemType";
 import {ItemShowMode} from "../models/enums/ItemShowMode";
+import {Token} from "../../utilities/TokenManager";
 
 export type TradeItemProps = TradeItemPropsState & TradeItemPropsDispatch & TradeItemPropsOwn
 
 
 export type TradeItemPropsState = {
-    isAuthorized: boolean
+    token: Token | null
 }
 
 export type TradeItemPropsDispatch = {

@@ -1,9 +1,9 @@
 export type TokenAllowedScopes = "trading" | "account"
 
 export type Token = {
-    accessToken: string,
-    expiresIn: number,
-    tokenType: string,
+    access_token: string,
+    expires_in: number,
+    token_type: string,
     scope: TokenAllowedScopes
 }
 
@@ -11,6 +11,7 @@ export type Token = {
 export class TokenManager {
     public static save = (token: Token): void =>
     {
+
         let json = JSON.stringify(token)
         localStorage.setItem(token.scope, json)
     }

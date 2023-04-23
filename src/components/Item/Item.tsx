@@ -9,7 +9,7 @@ import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 export class Item extends React.Component<ItemProps> {
     async componentDidMount() {
-        let requestManager = new GetItemByIdRequestManager(this.props.itemId)
+        let requestManager = new GetItemByIdRequestManager({itemId: this.props.itemId})
         let item = await requestManager.execute();
         if (item !== undefined) {
             this.props.loadItem(item)

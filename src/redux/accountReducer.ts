@@ -23,15 +23,27 @@ import {
     UPDATE_PASSWORD_ACTION_TYPE,
     UpdatePasswordActionType
 } from "../types/reducerTypes/actionTypes/Account/UpdatePasswordActionType";
+import {
+    LOAD_ACCOUNT_TOKEN_ACTION_TYPE,
+    LoadAccountTokenActionType
+} from "../types/reducerTypes/actionTypes/Account/LoadAccountTokenActionType";
+import {Token, TokenManager} from "../utilities/TokenManager";
+import {
+    UPDATE_VERIFY_PASSWORD_ACTION_TYPE,
+    UpdateVerifyPasswordActionType
+} from "../types/reducerTypes/actionTypes/Account/UpdateVerifyPasswordActionType";
+
+let initialToken = TokenManager.load("account");
 
 let initialState : AccountStateType = {
-    isAuthorized: false,
+    token: null,
     me: null,
     loadedUser: null,
     selectedUserId: "",
-    name: "",
+    name: "admin",
     email: "",
-    password: ""
+    password: "!QAZ2wsx",
+    verifyPassword: ""
 }
 
 const AccountReducer = (state = initialState, action: GlobalAccountActionType) : AccountStateType => {
@@ -66,12 +78,26 @@ const AccountReducer = (state = initialState, action: GlobalAccountActionType) :
                 ...state,
                 password: action.password
             }
+        case UPDATE_VERIFY_PASSWORD_ACTION_TYPE:
+            return {
+                ...state,
+                verifyPassword: action.verifyPassword
+            }
+        case LOAD_ACCOUNT_TOKEN_ACTION_TYPE:
+            return {
+                ...state,
+                token: {...action.token}
+            }
         default:
             return {
                 ...state
             }
     }
 }
+
+export const loadAccountTokenActionCreate = (token: Token): LoadAccountTokenActionType => ({
+    type: LOAD_ACCOUNT_TOKEN_ACTION_TYPE, token: token
+})
 
 export const updateNameActionCreate = (name: string): UpdateNameActionType => ({
     type: UPDATE_NAME_ACTION_TYPE, name: name
@@ -83,6 +109,10 @@ export const updateEmailActionCreate = (email: string): UpdateEmailActionType =>
 
 export const updatePasswordActionCreate = (password: string): UpdatePasswordActionType => ({
     type: UPDATE_PASSWORD_ACTION_TYPE, password: password
+})
+
+export const updateVerifyPasswordActionCreate = (verifyPassword: string): UpdateVerifyPasswordActionType => ({
+    type: UPDATE_VERIFY_PASSWORD_ACTION_TYPE, verifyPassword: verifyPassword
 })
 
 export const selectUserIdActionCreate = (id: string) : SelectUserIdActionType => ({
