@@ -1,6 +1,6 @@
 import {AbstractHttpHandler} from "./AbstractHttpHandler";
 import {AxiosError} from "axios";
-import {NotificationProps, NotificationStatus} from "../../components/Notification/Notification";
+import {NotificationProps, NotificationStatus} from "../../components/Notification/CustomNotification";
 
 export class BadRequestHttpHandler extends AbstractHttpHandler{
     protected override fittedHttpCode = 400

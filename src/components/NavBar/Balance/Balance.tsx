@@ -6,24 +6,22 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {NavLink} from "react-router-dom";
 
-class Balance extends React.Component<BalanceProps> {
-    render() {
-        return (
-            <div className={navBarModule.button}>
-                <div className={uiModule.button}>
-                    <div className={uiModule.green} >
-                        <div style={{margin:"auto auto auto 5px"}}>
-                            {this.props.me?.balance}
-                        </div>
-                        <div style={{margin:"auto 5px auto auto"}}>
-                            <NavLink to={"/payment"}><FontAwesomeIcon icon={faPlus}></FontAwesomeIcon></NavLink>
-                        </div>
+const Balance = (props:BalanceProps) => {
+    return (
+        <div className={navBarModule.button}>
+            <div className={uiModule.button}>
+                <div className={uiModule.green} >
+                    <div style={{margin:"auto auto auto 5px"}}>
+                        {props.me?.balance}
+                    </div>
+                    <div style={{margin:"auto 5px auto auto"}}>
+                        <NavLink to={"/payment"}><FontAwesomeIcon icon={faPlus}></FontAwesomeIcon></NavLink>
                     </div>
                 </div>
             </div>
+        </div>
 
-        );
-    }
+    );
 };
 
 export default Balance;

@@ -3,7 +3,7 @@ import {AbstractHttpHandler} from "./AbstractHttpHandler";
 import {BadRequestHttpHandler} from "./BadRequestHttpHandler";
 import {AxiosError} from "axios";
 import {WrongSignInDataHttpHandler} from "./WrongSignInDataHttpHandler";
-import {NotificationProps} from "../../components/Notification/Notification";
+import {NotificationProps} from "../../components/Notification/CustomNotification";
 
 export class ErrorHandler{
     private readonly _handlers: Array<AbstractHttpHandler>

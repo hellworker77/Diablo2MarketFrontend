@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {NavBarProps} from "../../types/props/NavBarProps";
 import navBarModule from '../../styles/NavBar/NavBar.module.css'
 import {NavLink} from "react-router-dom";
@@ -10,57 +10,67 @@ import lastDealsIcon from "../../images/icons/lightradius.png"
 import tradeIcon from "../../images/icons/diadem_ticon.png"
 import profileIcon from "../../images/icons/chgact.png"
 import {GetMeRequestManager} from "../../utilities/RequestHandlerFactory/Account/GetMeRequestManager";
+import {fetchData, loadFetchedData} from "../../utilities/FetchData";
+import {ApplicationUserType} from "../../types/models/ApplicationUserType";
+import {NotificationProps} from "../Notification/CustomNotification";
 
-class NavBar extends React.Component<NavBarProps> {
-    async componentDidUpdate(prevProps: Readonly<NavBarProps>, prevState: Readonly<{}>, snapshot?: any) {
-        if(prevProps.token === null && this.props.token !== null){
-            let requestManager = new GetMeRequestManager(this.props.token);
+const NavBar = (props: NavBarProps) => {
+    useEffect(() => {
+        if (prevProps !== undefined) {
+            if(prevProps.token === null && props.token !== null){
 
-            let me = await requestManager.execute();
-            this.props.loadMe(me);
+                let requestManager = new GetMeRequestManager(props.token);
+
+                let fetch = fetchData<ApplicationUserType>(requestManager.getResponse(), setNotification, typeof NavBar)
+
+                loadFetchedData(fetch, props.loadMe)
+            }
         }
-    }
+        SetPrevProps(props)
+    }, [props])
 
-    render() {
-        return (
-            <div className={navBarModule.container}>
-                <div className={navBarModule.content}>
-                    {this.props.token?
-                        <NavLink className={navBarModule.button}
-                                 to={"/profile"}>
-                            <img alt={"icon"} src={profileIcon}></img>
-                            Profile
-                        </NavLink>:<div></div>}
+    const [notification, setNotification] = useState<NotificationProps>();
+    const [prevProps, SetPrevProps] = useState<NavBarProps>();
+    return (
+        <div className={navBarModule.container}>
+            <div className={navBarModule.content}>
+                {props.token ?
+                    <NavLink className={navBarModule.button}
+                             to={"/profile"}>
+                        <img alt={"icon"} src={profileIcon}></img>
+                        Profile
+                    </NavLink> : <div></div>}
+                <NavLink
+                    to={"/trade"}
+                    className={navBarModule.button}>
+                    <img alt={"icon"} src={tradeIcon}></img>
+                    Trade
+                </NavLink>
+                <NavLink to={"/history"}
+                         className={navBarModule.button}>
+                    <img alt={"icon"} src={lastDealsIcon}></img>
+                    Last Deals
+                </NavLink>
+                <div></div>
+                {props.token ? <BalancerContainer/> : <div></div>}
+                {props.token ? <NavLink to={"/logout"}
+                                        className={navBarModule.button}>
+                    <FontAwesomeIcon icon={faSignOut}/>
+                </NavLink> : <div></div>}
+                {props.token ? <div></div> :
                     <NavLink
-                        to={"/trade"}
-                        className={navBarModule.button}>
-                        <img alt={"icon"} src={tradeIcon}></img>
-                        Trade
-                    </NavLink>
-                    <NavLink to={"/history"}
-                             className={navBarModule.button}>
-                        <img alt={"icon"} src={lastDealsIcon}></img>
-                        Last Deals
-                    </NavLink>
-                    <div></div>
-                    {this.props.token?<BalancerContainer />:<div></div>}
-                    {this.props.token?<NavLink to={"/logout"}
-                                                      className={navBarModule.button}>
-                        <FontAwesomeIcon icon={faSignOut}/>
-                    </NavLink>:<div></div>}
-                    {this.props.token?<div></div>:
-                        <NavLink
                         to={"/login"}
                         className={navBarModule.button}>
-                            <FontAwesomeIcon icon={faSignIn}/>
-                        </NavLink>}
-                    <div className={navBarModule.button}>
-                        <LanguageSwitcherContainer />
-                    </div>
+                        <FontAwesomeIcon icon={faSignIn}/>
+                    </NavLink>}
+                <div className={navBarModule.button}>
+                    <LanguageSwitcherContainer/>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
+
+
 
 export default NavBar;

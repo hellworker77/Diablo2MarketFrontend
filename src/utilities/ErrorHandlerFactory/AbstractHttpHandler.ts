@@ -1,5 +1,5 @@
 import {AxiosError} from "axios";
-import {NotificationProps, NotificationStatus} from "../../components/Notification/Notification";
+import {NotificationProps, NotificationStatus} from "../../components/Notification/CustomNotification";
 
 export class AbstractHttpHandler{
     protected fittedSource: string = "Any"

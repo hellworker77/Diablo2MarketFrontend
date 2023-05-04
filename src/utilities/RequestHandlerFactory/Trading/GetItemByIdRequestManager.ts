@@ -1,5 +1,5 @@
 import {BaseEndpoint} from "../BaseUrl";
-import axios, {AxiosRequestConfig} from "axios";
+import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
 import {ItemType} from "../../../types/models/ItemType";
 
 
@@ -12,7 +12,7 @@ type requestParams = {
 
 
 export class GetItemByIdRequestManager {
-    private _config: AxiosRequestConfig<responseType>;
+    private readonly _config: AxiosRequestConfig<responseType>;
 
     constructor(params: requestParams) {
         const config: AxiosRequestConfig = {
@@ -25,9 +25,7 @@ export class GetItemByIdRequestManager {
         this._config = config;
     }
 
-    public execute = (): Promise<responseType> => {
+    public getResponse = (): Promise<AxiosResponse<responseType>> => {
         return axios<responseType>(this._config)
-            .then(response => {return response.data as responseType})
-            .catch();
     }
 }

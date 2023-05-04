@@ -1,6 +1,6 @@
 import {AbstractHttpHandler} from "./AbstractHttpHandler";
 import {AxiosError} from "axios";
-import {NotificationProps, NotificationStatus} from "../../components/Notification/Notification";
+import {NotificationProps, NotificationStatus} from "../../components/Notification/CustomNotification";
 import SignIn from "../../components/SignIn/SignIn";
 
 export class WrongSignInDataHttpHandler extends AbstractHttpHandler{
