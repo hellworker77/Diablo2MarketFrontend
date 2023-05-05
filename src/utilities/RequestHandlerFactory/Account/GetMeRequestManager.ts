@@ -1,5 +1,5 @@
 import {BaseEndpoint} from "../BaseUrl";
-import axios, {AxiosRequestConfig} from "axios";
+import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
 import {ApplicationUserType} from "../../../types/models/ApplicationUserType";
 import {Token} from "../../TokenManager";
 
@@ -9,7 +9,7 @@ const GetMeEndpoint = BaseEndpoint + "Account/me"
 type responseType = ApplicationUserType
 
 export class GetMeRequestManager {
-    private _config: AxiosRequestConfig<responseType>;
+    private readonly _config: AxiosRequestConfig<responseType>;
 
     constructor(token: Token) {
 
@@ -22,11 +22,8 @@ export class GetMeRequestManager {
         };
         this._config = config;
     }
-
-    public execute = (): Promise<responseType> => {
+    public getResponse = (): Promise<AxiosResponse<responseType>> => {
         return axios<responseType>(this._config)
-            .then(response => {return response.data as responseType})
-            .catch();
 
     }
 }

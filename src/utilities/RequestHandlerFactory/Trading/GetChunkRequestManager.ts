@@ -1,5 +1,5 @@
 import {BaseEndpoint} from "../BaseUrl";
-import axios, {AxiosRequestConfig} from "axios";
+import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
 import {ItemType} from "../../../types/models/ItemType";
 
 
@@ -26,10 +26,8 @@ export class GetChunkRequestManager{
         this._config = config;
     }
 
-    public execute = (): Promise<responseType> => {
+    public getResponse = (): Promise<AxiosResponse<responseType>> => {
         return axios<responseType>(this._config)
-            .then(response => {return response.data as responseType})
-            .catch();
 
     }
 }

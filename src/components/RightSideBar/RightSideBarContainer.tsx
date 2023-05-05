@@ -6,6 +6,9 @@ import {DealType} from "../../types/models/DealType";
 import {loadLast24HoursDealsActionCreate} from "../../redux/tradingReducer";
 import {connect} from "react-redux";
 import RightSideBar from "./RightSideBar";
+import {NotifyPropsOwn} from "../../types/props/NotificationProps";
+import {addNotifyActionCreate} from "../../redux/notificationReducer";
+import {GlobalNotificationActionType} from "../../types/reducerTypes/actionTypes/GlobalNotificationActionType";
 
 
 let mapStateToProps = (state: AppStateType): RightSideBarPropsState => {
@@ -14,10 +17,13 @@ let mapStateToProps = (state: AppStateType): RightSideBarPropsState => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType>): RightSideBarPropsDispatch => {
+let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType | GlobalNotificationActionType>): RightSideBarPropsDispatch => {
     return {
         loadLast24Deals: (deals: Array<DealType>) =>{
             dispatch(loadLast24HoursDealsActionCreate(deals))
+        },
+        addNotify: (notify: NotifyPropsOwn) => {
+            dispatch(addNotifyActionCreate(notify))
         }
     }
 }

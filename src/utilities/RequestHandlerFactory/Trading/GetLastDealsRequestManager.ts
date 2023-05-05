@@ -3,7 +3,7 @@ import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
 import {DealType} from "../../../types/models/DealType";
 
 
-const GetLast24HoursDealsEndpoint = BaseEndpoint + "Deal/last24HoursDeals"
+const GetLast24HoursDealsEndpoint = BaseEndpoint + "Deal/chunk"
 
 type responseType = Array<DealType>
 type requestParams = {
@@ -11,7 +11,7 @@ type requestParams = {
     size: number
 }
 
-export class GetLast24HoursDealsRequestManager {
+export class GetLastDealsRequestManager {
     private readonly _config: AxiosRequestConfig<responseType>;
 
     constructor(params: requestParams) {

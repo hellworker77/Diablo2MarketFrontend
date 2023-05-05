@@ -10,6 +10,9 @@ import {
     updatePasswordActionCreate
 } from "../../redux/accountReducer";
 import {Token} from "../../utilities/TokenManager";
+import {GlobalNotificationActionType} from "../../types/reducerTypes/actionTypes/GlobalNotificationActionType";
+import {NotifyPropsOwn} from "../../types/props/NotificationProps";
+import {addNotifyActionCreate} from "../../redux/notificationReducer";
 
 let mapStateToProps = (state: AppStateType): SignInPropsState => {
     return {
@@ -18,7 +21,7 @@ let mapStateToProps = (state: AppStateType): SignInPropsState => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<GlobalAccountActionType>): SignInPropsDispatch => {
+let mapDispatchToProps = (dispatch: Dispatch<GlobalAccountActionType | GlobalNotificationActionType>): SignInPropsDispatch => {
     return {
         updateName: (name: string) => {
             dispatch(updateNameActionCreate(name))
@@ -28,6 +31,9 @@ let mapDispatchToProps = (dispatch: Dispatch<GlobalAccountActionType>): SignInPr
         },
         loadAccountToken: (token: Token) => {
             dispatch(loadAccountTokenActionCreate(token))
+        },
+        addNotify: (notify: NotifyPropsOwn) => {
+            dispatch(addNotifyActionCreate(notify))
         }
     }
 }

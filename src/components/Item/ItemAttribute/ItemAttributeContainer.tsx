@@ -3,7 +3,7 @@ import {Dispatch} from "redux";
 import {GlobalTradingActionType} from "../../../types/reducerTypes/actionTypes/GlobalTradingActionType";
 import {ItemAttributeDispatch, ItemAttributeState} from "../../../types/props/ItemAttributeProps";
 import {connect} from "react-redux";
-import {ItemAttribute} from "./ItemAttribute";
+import ItemAttribute from "./ItemAttribute";
 
 let mapStateToProps = (state: AppStateType) : ItemAttributeState => {
     return {

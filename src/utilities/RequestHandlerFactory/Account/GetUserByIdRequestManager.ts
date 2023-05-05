@@ -1,5 +1,5 @@
 import {BaseEndpoint} from "../BaseUrl";
-import axios, {AxiosRequestConfig} from "axios";
+import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
 import {ApplicationUserType} from "../../../types/models/ApplicationUserType";
 
 
@@ -25,10 +25,8 @@ export class GetUserByIdRequestManager {
         this._config = config;
     }
 
-    public execute = (): Promise<responseType | void> => {
-        return axios<responseType>(this._config)
-            .then(response => {return response.data as responseType})
-            .catch();
+    public getResponse = (): Promise<AxiosResponse<responseType>> => {
+        return axios<responseType>(this._config);
 
     }
 }

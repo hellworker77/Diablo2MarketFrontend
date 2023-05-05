@@ -1,4 +1,5 @@
 import {ItemType} from "../models/ItemType";
+import {NotifyPropsOwn} from "./NotificationProps";
 
 export type TradeProps = TradePropsState & TradePropsDispatch
 
@@ -9,5 +10,6 @@ export type TradePropsState = {
 
 export type TradePropsDispatch = {
     loadItems: (items: Array<ItemType>) => void
+    addNotify: (notify: NotifyPropsOwn) => void
 }
 

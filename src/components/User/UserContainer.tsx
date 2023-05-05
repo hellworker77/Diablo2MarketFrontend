@@ -6,6 +6,9 @@ import {connect} from "react-redux";
 import User from "./User";
 import {ApplicationUserType} from "../../types/models/ApplicationUserType";
 import {loadUserActionCreate} from "../../redux/accountReducer";
+import {GlobalNotificationActionType} from "../../types/reducerTypes/actionTypes/GlobalNotificationActionType";
+import {NotifyPropsOwn} from "../../types/props/NotificationProps";
+import {addNotifyActionCreate} from "../../redux/notificationReducer";
 
 
 let mapStateToProps = (state: AppStateType) : UserPropsState => {
@@ -15,10 +18,13 @@ let mapStateToProps = (state: AppStateType) : UserPropsState => {
     }
 }
 
-let mapDispatchToProps = (dispatch: Dispatch<GlobalAccountActionType>) : UserPropsDispatch => {
+let mapDispatchToProps = (dispatch: Dispatch<GlobalAccountActionType | GlobalNotificationActionType>) : UserPropsDispatch => {
     return {
         loadUser: (user: ApplicationUserType) => {
             dispatch(loadUserActionCreate(user))
+        },
+        addNotify: (notify: NotifyPropsOwn) => {
+            dispatch(addNotifyActionCreate(notify))
         }
     }
 }

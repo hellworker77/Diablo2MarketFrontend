@@ -2,17 +2,12 @@ import React from "react"
 import {ProfileProps} from "../../types/props/ProfileProps";
 
 
-class Profile extends React.Component<ProfileProps>{
-    async componentDidMount() {
-    }
-
-    render() {
-        return(
-            <div>
-
-            </div>
-        )
-    }
+const Profile = (props: ProfileProps) => {
+    return (
+        <div>
+            {props.me?.balance}
+        </div>
+    )
 }
 
 export default Profile;

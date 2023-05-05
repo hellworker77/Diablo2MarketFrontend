@@ -7,8 +7,9 @@ import {GlobalAccountActionType} from "../../types/reducerTypes/actionTypes/Glob
 
 let mapStateToProps = (state: AppStateType): ProfilePropsState => {
     return {
-        userId: state.accountReducer.selectedUserId,
+        token: state.accountReducer.token,
         me: state.accountReducer.me
+
     }
 }
 

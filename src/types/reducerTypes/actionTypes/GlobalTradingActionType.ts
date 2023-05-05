@@ -3,9 +3,11 @@ import {SelectItemShowModeActionType} from "./Trading/SelectItemShowModeActionTy
 import {LoadItemActionType} from "./Trading/LoadItemActionType";
 import {LoadItemsActionType} from "./Trading/LoadItemsActionType";
 import {LoadLast24HoursDealsActionType} from "./Trading/LoadLast24HoursDealsActionType";
+import {LoadLastDealsActionType} from "./Trading/LoadLastDealsActionType";
 
 export type GlobalTradingActionType = SelectItemActionType |
     SelectItemShowModeActionType |
     LoadItemActionType |
     LoadItemsActionType |
-    LoadLast24HoursDealsActionType
+    LoadLast24HoursDealsActionType |
+    LoadLastDealsActionType

@@ -2,12 +2,12 @@ import React from "react";
 import {ItemAttributeProps} from "../../../types/props/ItemAttributeProps";
 import itemAttributeModule from "../../../styles/Item/ItemAttribute.module.css"
 
-export class ItemAttribute extends React.Component<ItemAttributeProps>{
-    render() {
-        return(
-            <div className={itemAttributeModule.container}>
-                {this.props.itemAttribute.description}
-            </div>
-        )
-    }
+const ItemAttribute = (props: ItemAttributeProps) => {
+    return(
+        <div className={itemAttributeModule.container}>
+            {props.itemAttribute.description}
+        </div>
+    )
 }
+
+export default ItemAttribute;

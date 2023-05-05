@@ -34,7 +34,7 @@ export class SignInRequestManager {
         this._body.append('username', data.username);
     }
 
-    public execute = (): Promise<AxiosResponse<responseType>> => {
+    public getResponse = (): Promise<AxiosResponse<responseType>> => {
         return axios<responseType>(this._config);
     }
 }
