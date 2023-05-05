@@ -1,7 +1,7 @@
 import {AbstractHttpHandler} from "./AbstractHttpHandler";
 import {AxiosError} from "axios";
-import {NotificationProps, NotificationStatus} from "../../components/Notification/CustomNotification";
 import SignIn from "../../components/SignIn/SignIn";
+import {NotifyProps} from "../../types/props/NotificationProps";
 
 export class WrongSignInDataHttpHandler extends AbstractHttpHandler{
     protected override fittedSource = SignIn.name;
@@ -11,7 +11,7 @@ export class WrongSignInDataHttpHandler extends AbstractHttpHandler{
             error.response?.request.status === this.fittedHttpCode;
     }
 
-    public handle = (error: AxiosError) : NotificationProps =>{
+    public handle = (error: AxiosError) : NotifyProps=>{
         // @ts-ignore
         return {status: NotificationStatus.Warning, isVisible: true, message: error.response.data.error_description}
     }

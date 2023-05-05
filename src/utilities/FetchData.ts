@@ -1,9 +1,9 @@
 import {AxiosResponse} from "axios";
-import {NotificationProps} from "../components/Notification/CustomNotification";
 import {ErrorHandler} from "./ErrorHandlerFactory/ErrorHandler";
+import {NotifyPropsOwn} from "../types/props/NotificationProps";
 
 export async function fetchData<T>(response: Promise<AxiosResponse<T>>,
-                                   callback: (data: NotificationProps) => void,
+                                   callback: (data: NotifyPropsOwn) => void,
                                    source: string) {
     let task = response
         .then(response => {
@@ -19,7 +19,7 @@ export async function fetchData<T>(response: Promise<AxiosResponse<T>>,
 export function loadFetchedData<T>(promise: Promise<void | T>
     , callback: (data: T) => void): void {
     promise.then(data => {
-        if(data !== undefined){
+        if (data !== undefined) {
             callback(data)
         }
     })

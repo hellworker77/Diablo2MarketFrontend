@@ -1,10 +1,9 @@
-import React, {useState} from "react"
+import React from "react"
 import {SignInProps} from "../../types/props/SignInProps";
 import uiModule from "../../styles/Ui.module.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faKey} from "@fortawesome/free-solid-svg-icons";
 import {Link, useNavigate} from "react-router-dom";
-import CustomNotification, {NotificationProps} from "../Notification/CustomNotification";
 import {SignInRequestManager} from "../../utilities/RequestHandlerFactory/Account/SignInRequestManager";
 import {fetchData} from "../../utilities/FetchData";
 import {Token, TokenManager} from "../../utilities/TokenManager";
@@ -12,8 +11,6 @@ import {Token, TokenManager} from "../../utilities/TokenManager";
 const SignIn = (props: SignInProps) => {
     let nameRef = React.createRef<HTMLInputElement>();
     let passwordRef = React.createRef<HTMLInputElement>();
-
-    const [notification, setNotification] = useState<NotificationProps>();
 
     const navigate = useNavigate();
 
@@ -42,11 +39,6 @@ const SignIn = (props: SignInProps) => {
                            onChange={() => {
                                props.updatePassword(passwordRef.current?.value ?? "")
                            }}/>
-                    {
-                        notification ? <CustomNotification status={notification.status}
-                                                           isVisible={notification.isVisible}
-                                                           message={notification.message}/> : ""
-                    }
                     <div style={{display: "flex"}}>
                         <div className={uiModule.button}
                              style={{margin: "auto auto auto 0"}}>
@@ -60,7 +52,7 @@ const SignIn = (props: SignInProps) => {
 
                                     let response = requestManager.getResponse()
 
-                                    fetchData<Token>(response, setNotification, typeof SignIn)
+                                    fetchData<Token>(response, props.addNotify, typeof SignIn)
                                         .then(token => {
                                             if (token !== undefined) {
                                                 TokenManager.save(token)

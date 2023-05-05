@@ -12,24 +12,21 @@ import profileIcon from "../../images/icons/chgact.png"
 import {GetMeRequestManager} from "../../utilities/RequestHandlerFactory/Account/GetMeRequestManager";
 import {fetchData, loadFetchedData} from "../../utilities/FetchData";
 import {ApplicationUserType} from "../../types/models/ApplicationUserType";
-import {NotificationProps} from "../Notification/CustomNotification";
 
 const NavBar = (props: NavBarProps) => {
     useEffect(() => {
         if (prevProps !== undefined) {
-            if(prevProps.token === null && props.token !== null){
+            if (prevProps.token === null && props.token !== null) {
 
                 let requestManager = new GetMeRequestManager(props.token);
 
-                let fetch = fetchData<ApplicationUserType>(requestManager.getResponse(), setNotification, typeof NavBar)
+                let fetch = fetchData<ApplicationUserType>(requestManager.getResponse(), props.addNotify, typeof NavBar)
 
                 loadFetchedData(fetch, props.loadMe)
             }
         }
         SetPrevProps(props)
     }, [props])
-
-    const [notification, setNotification] = useState<NotificationProps>();
     const [prevProps, SetPrevProps] = useState<NavBarProps>();
     return (
         <div className={navBarModule.container}>
@@ -70,7 +67,6 @@ const NavBar = (props: NavBarProps) => {
         </div>
     )
 }
-
 
 
 export default NavBar;

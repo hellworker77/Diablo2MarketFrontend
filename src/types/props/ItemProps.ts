@@ -1,5 +1,6 @@
 import {ItemShowMode} from "../models/enums/ItemShowMode";
 import {ItemType} from "../models/ItemType";
+import {NotifyPropsOwn} from "./NotificationProps";
 
 export type ItemProps = ItemPropsState & ItemPropsDispatch
 
@@ -12,5 +13,6 @@ export type ItemPropsState = {
 
 export type ItemPropsDispatch = {
     loadItem : (item: ItemType) => void
+    addNotify: (notify: NotifyPropsOwn) => void
 }
 

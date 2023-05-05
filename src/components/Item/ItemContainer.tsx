@@ -6,6 +6,9 @@ import {Dispatch} from "redux";
 import {ItemPropsDispatch, ItemPropsState} from "../../types/props/ItemProps";
 import {ItemType} from "../../types/models/ItemType";
 import {loadItemActionCreate} from "../../redux/tradingReducer";
+import {NotifyPropsOwn} from "../../types/props/NotificationProps";
+import {addNotifyActionCreate} from "../../redux/notificationReducer";
+import {GlobalNotificationActionType} from "../../types/reducerTypes/actionTypes/GlobalNotificationActionType";
 
 
 let mapStateToProps = (state: AppStateType) : ItemPropsState => {
@@ -15,10 +18,13 @@ let mapStateToProps = (state: AppStateType) : ItemPropsState => {
         loadedItem: state.tradingReducer.loadedItem
     }
 }
-let mapDispatchToProps = (dispatch : Dispatch<GlobalTradingActionType>) : ItemPropsDispatch => {
+let mapDispatchToProps = (dispatch : Dispatch<GlobalTradingActionType | GlobalNotificationActionType>) : ItemPropsDispatch => {
     return {
         loadItem:(item: ItemType) => {
             dispatch(loadItemActionCreate(item))
+        },
+        addNotify: (notify: NotifyPropsOwn) =>{
+            dispatch(addNotifyActionCreate(notify))
         }
     }
 }

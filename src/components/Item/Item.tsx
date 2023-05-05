@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {ItemProps} from "../../types/props/ItemProps";
 import {GetItemByIdRequestManager} from "../../utilities/RequestHandlerFactory/Trading/GetItemByIdRequestManager";
 import uiModule from '../../styles/Ui.module.css'
@@ -7,7 +7,6 @@ import ItemAttributeContainer from "./ItemAttribute/ItemAttributeContainer";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {useNavigate} from "react-router-dom";
-import CustomNotification, {NotificationProps} from "../Notification/CustomNotification";
 import {fetchData, loadFetchedData} from "../../utilities/FetchData";
 import {ItemType} from "../../types/models/ItemType";
 
@@ -16,12 +15,9 @@ const Item = (props: ItemProps) => {
 
     useEffect(() => {
         let requestManager = new GetItemByIdRequestManager({itemId: props.itemId})
-        let fetch = fetchData<ItemType>(requestManager.getResponse(), setNotification, typeof Item)
+        let fetch = fetchData<ItemType>(requestManager.getResponse(), props.addNotify, typeof Item)
         loadFetchedData(fetch, props.loadItem)
     }, [props])
-
-    const [notification, setNotification] = useState<NotificationProps>();
-
     return (
         <div>
             <FontAwesomeIcon icon={faArrowLeft}
@@ -43,11 +39,6 @@ const Item = (props: ItemProps) => {
                                                 itemAttribute={attribute}/>
                     )}
             </div>
-            {
-                notification ? <CustomNotification status={notification.status}
-                                                   isVisible={notification.isVisible}
-                                                   message={notification.message}/> : ""
-            }
         </div>
     )
 }

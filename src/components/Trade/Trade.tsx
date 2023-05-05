@@ -6,15 +6,12 @@ import tradeHeaderIcon from "../../images/icons/holygrail.png"
 import {GetChunkRequestManager} from "../../utilities/RequestHandlerFactory/Trading/GetChunkRequestManager";
 import {fetchData} from "../../utilities/FetchData";
 import {ItemType} from "../../types/models/ItemType";
-import {NotificationProps} from "../Notification/CustomNotification";
 
 const Trade = (props: TradeProps) => {
 
-    const [notification, setNotification] = useState<NotificationProps>();
-
     useEffect(() => {
         let requestManager = new GetChunkRequestManager({index: 0, size: 3});
-        let fetch = fetchData<Array<ItemType>>(requestManager.getResponse(), setNotification, typeof Trade)
+        let fetch = fetchData<Array<ItemType>>(requestManager.getResponse(), props.addNotify , typeof Trade)
 
         fetch.then(items => {
             if (items !== undefined) {

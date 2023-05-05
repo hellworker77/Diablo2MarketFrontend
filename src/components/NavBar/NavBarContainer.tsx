@@ -3,10 +3,12 @@ import {AppStateType} from "../../redux/store";
 import {Dispatch} from "redux";
 import NavBar from "./NavBar";
 import {NavBarPropsDispatch, NavBarPropsState} from "../../types/props/NavBarProps";
-import {GlobalNavActionType} from "../../types/reducerTypes/actionTypes/GlobalNavActionType";
 import {GlobalAccountActionType} from "../../types/reducerTypes/actionTypes/GlobalAccountActionType";
-import {loadMeActionCreate, updateNameActionCreate} from "../../redux/accountReducer";
+import {loadMeActionCreate} from "../../redux/accountReducer";
 import {ApplicationUserType} from "../../types/models/ApplicationUserType";
+import {NotifyPropsOwn} from "../../types/props/NotificationProps";
+import {addNotifyActionCreate} from "../../redux/notificationReducer";
+import {GlobalNotificationActionType} from "../../types/reducerTypes/actionTypes/GlobalNotificationActionType";
 
 
 let mapStateToProps = (state: AppStateType): NavBarPropsState => {
@@ -14,10 +16,13 @@ let mapStateToProps = (state: AppStateType): NavBarPropsState => {
         token: state.accountReducer.token
     }
 }
-let mapDispatchToProps = (dispatch: Dispatch<GlobalNavActionType | GlobalAccountActionType>): NavBarPropsDispatch => {
+let mapDispatchToProps = (dispatch: Dispatch<GlobalAccountActionType | GlobalNotificationActionType>): NavBarPropsDispatch => {
     return {
         loadMe: (me: ApplicationUserType) => {
             dispatch(loadMeActionCreate(me))
+        },
+        addNotify: (notify: NotifyPropsOwn) => {
+            dispatch(addNotifyActionCreate(notify))
         }
     }
 }

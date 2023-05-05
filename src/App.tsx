@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import NavBarContainer from "./components/NavBar/NavBarContainer";
 import PaymentContainer from "./components/Payment/PaymentContainer";
 import TradeContainer from "./components/Trade/TradeContainer";
@@ -10,6 +10,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import UserContainer from "./components/User/UserContainer";
 import SignInContainer from "./components/SignIn/SignInContainer";
 import SignUpContainer from "./components/SignUp/SignUpContainer";
+import NotificationContainer from "./components/Notification/NotificationContainer";
 
 function App() {
     return (
@@ -30,8 +31,9 @@ function App() {
                     </Routes>
                 </div>
                 <div className={appModule.right}>
-                    <RightSideBarContainer />
+                    <RightSideBarContainer/>
                 </div>
+                <NotificationContainer/>
             </div>
         </BrowserRouter>
     );

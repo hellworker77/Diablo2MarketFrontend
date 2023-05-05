@@ -1,11 +1,27 @@
-.container {
-    border-radius: 5px;
-    display: flex;
+.wrapper{
     position: absolute;
     right: 0;
     bottom: 0;
     width: 15vw;
+}
+.container {
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    opacity: 1;
+    animation: fadeOut 5s linear forwards;
+}
+.container:hover {
+    animation: none;
+}
 
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 .container .info,
