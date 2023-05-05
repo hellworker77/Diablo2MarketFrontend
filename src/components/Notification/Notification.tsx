@@ -5,7 +5,8 @@ import NotifyContainer from "./Notify/NotifyContainer";
 const Notification = (props: NotificationProps) => {
     return (
         <div className={notificationModule.wrapper}>
-            {props.notifies.map(notify => <NotifyContainer status={notify.status}
+            {props.notifies.map(notify => <NotifyContainer key = {notify.id}
+                                                           status={notify.status}
                                                            message={notify.message}
                                                            id={notify.id}/>)}
         </div>

@@ -23,6 +23,7 @@ const NavBar = (props: NavBarProps) => {
                 let fetch = fetchData<ApplicationUserType>(requestManager.getResponse(), props.addNotify, typeof NavBar)
 
                 loadFetchedData(fetch, props.loadMe)
+                console.log(1)
             }
         }
         SetPrevProps(props)

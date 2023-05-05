@@ -20,6 +20,10 @@ import {
     LOAD_LAST_24_HOURS_ACTION_TYPE,
     LoadLast24HoursDealsActionType
 } from "../types/reducerTypes/actionTypes/Trading/LoadLast24HoursDealsActionType";
+import {
+    LOAD_LAST_DEALS_ACTION_TYPE,
+    LoadLastDealsActionType
+} from "../types/reducerTypes/actionTypes/Trading/LoadLastDealsActionType";
 
 
 let initialState: TradingStateType = {
@@ -58,6 +62,11 @@ const TradingReducer = (state = initialState, action: GlobalTradingActionType): 
                 ...state,
                 last24deals: [...action.deals]
             }
+        case LOAD_LAST_DEALS_ACTION_TYPE:
+            return {
+                ...state,
+                deals: [...action.deals]
+            }
         default:
             return {
                 ...state
@@ -83,6 +92,10 @@ export const selectItemShowModeActionCreate = (mode: ItemShowMode): SelectItemSh
 
 export const loadLast24HoursDealsActionCreate = (deals: Array<DealType>): LoadLast24HoursDealsActionType => ({
     type: LOAD_LAST_24_HOURS_ACTION_TYPE, deals: deals
+})
+
+export const loadLastDealsActionCreate = (deals: Array<DealType>): LoadLastDealsActionType => ({
+    type: LOAD_LAST_DEALS_ACTION_TYPE, deals: deals
 })
 
 export default TradingReducer;

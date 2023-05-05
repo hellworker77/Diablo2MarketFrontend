@@ -57,7 +57,7 @@ const SignIn = (props: SignInProps) => {
                                             if (token !== undefined) {
                                                 TokenManager.save(token)
                                                 props.loadAccountToken(token)
-                                                navigate("/trade")
+                                                navigate("/profile")
                                             }
                                         })
                                 }}>
