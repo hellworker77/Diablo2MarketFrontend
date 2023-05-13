@@ -1,4 +1,4 @@
-export type TokenAllowedScopes = "trading" | "account"
+export type TokenAllowedScopes = "account api email offline_access openid profile trading"
 
 export type Token = {
     access_token: string,
@@ -7,11 +7,8 @@ export type Token = {
     scope: TokenAllowedScopes
 }
 
-
 export class TokenManager {
-    public static save = (token: Token): void =>
-    {
-
+    public static save = (token: Token): void => {
         let json = JSON.stringify(token)
         localStorage.setItem(token.scope, json)
     }
@@ -19,7 +16,7 @@ export class TokenManager {
         let token: Token | null = null;
         let json = localStorage.getItem(scope);
 
-        if(json !== null){
+        if (json !== null) {
             token = JSON.parse(json);
         }
         return token

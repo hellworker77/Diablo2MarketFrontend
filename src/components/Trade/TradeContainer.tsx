@@ -12,7 +12,8 @@ import {addNotifyActionCreate} from "../../redux/notificationReducer";
 
 let mapStateToProps = (state: AppStateType): TradePropsState => {
     return {
-        items: state.tradingReducer.items
+        items: state.tradingReducer.items,
+        token: state.accountReducer.token
     }
 }
 let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType | GlobalNotificationActionType>): TradePropsDispatch => {

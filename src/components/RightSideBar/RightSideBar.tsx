@@ -1,21 +1,24 @@
-import React, {useEffect} from "react"
+import React, {useEffect, useState} from "react"
 import {RightSideBarProps} from "../../types/props/RightSideBarProps";
-import {
-    GetLast24HoursDealsRequestManager
-} from "../../utilities/RequestHandlerFactory/Trading/GetLast24HoursDealsRequestManager";
 import uiModule from "../../styles/Ui.module.css"
 import DealContainer from "../Deal/DealContainer";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCoins} from "@fortawesome/free-solid-svg-icons";
-import {fetchData, loadFetchedData} from "../../utilities/FetchData";
+import {
+    GetLastDayDealsRequestManager
+} from "../../utilities/RequestManagers/TradingManagers/GetLastDayDealsRequestManager";
+import {Page} from "../../utilities/RequestManagers/Pages/Page";
 
 const RightSideBar = (props: RightSideBarProps) => {
+    const pageSize = 30
+
+    const [requestManager, setRequestManager] =
+        useState(new GetLastDayDealsRequestManager(props.addNotify,
+            typeof RightSideBar,
+            new Page(0, pageSize, undefined)))
+
     useEffect(() => {
-        let requestManager = new GetLast24HoursDealsRequestManager({index: 0, size: 50})
-
-        let fetch = fetchData(requestManager.getResponse(), props.addNotify, typeof RightSideBar)
-
-        loadFetchedData(fetch, props.loadLast24Deals)
+        requestManager.begin(props.loadLast24Deals)
     }, [])
 
 

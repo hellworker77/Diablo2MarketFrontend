@@ -1,11 +1,21 @@
 import {ApplicationUserType} from "../models/ApplicationUserType";
 import {Token} from "../../utilities/TokenManager";
+import {DealType} from "../models/DealType";
+import {ItemType} from "../models/ItemType";
+import {NotifyPropsOwn} from "./NotificationProps";
 
 export type ProfileProps = ProfilePropsState & ProfilePropsDispatch
 
 export type ProfilePropsState = {
     token: Token | null
-    me: ApplicationUserType | null,
+    me: ApplicationUserType | null
+    myDeals: Array<DealType> | null
+    myItems: Array<ItemType> | null
 }
 
-export type ProfilePropsDispatch = {}
+export type ProfilePropsDispatch = {
+    loadMe: (user: ApplicationUserType) => void
+    loadMyDeals : (deals: Array<DealType>) => void
+    loadMyItems : (deals: Array<ItemType>) => void
+    addNotify: (notify: NotifyPropsOwn) => void
+}

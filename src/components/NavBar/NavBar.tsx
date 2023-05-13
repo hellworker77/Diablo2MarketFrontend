@@ -9,26 +9,23 @@ import {faSignIn, faSignOut} from "@fortawesome/free-solid-svg-icons";
 import lastDealsIcon from "../../images/icons/lightradius.png"
 import tradeIcon from "../../images/icons/diadem_ticon.png"
 import profileIcon from "../../images/icons/chgact.png"
-import {GetMeRequestManager} from "../../utilities/RequestHandlerFactory/Account/GetMeRequestManager";
-import {fetchData, loadFetchedData} from "../../utilities/FetchData";
-import {ApplicationUserType} from "../../types/models/ApplicationUserType";
+import {GetMeRequestManager} from "../../utilities/RequestManagers/AccountManagers/GetMeRequestManager";
+
 
 const NavBar = (props: NavBarProps) => {
     useEffect(() => {
         if (prevProps !== undefined) {
             if (prevProps.token === null && props.token !== null) {
+                let requestManager = new GetMeRequestManager(props.addNotify, typeof NavBar)
 
-                let requestManager = new GetMeRequestManager(props.token);
+                requestManager.buildConfig({token: props.token})
 
-                let fetch = fetchData<ApplicationUserType>(requestManager.getResponse(), props.addNotify, typeof NavBar)
-
-                loadFetchedData(fetch, props.loadMe)
-                console.log(1)
+                requestManager.queryCallback(props.loadMe).then()
             }
         }
-        SetPrevProps(props)
+        setPrevProps(props)
     }, [props])
-    const [prevProps, SetPrevProps] = useState<NavBarProps>();
+    const [prevProps, setPrevProps] = useState<NavBarProps>();
     return (
         <div className={navBarModule.container}>
             <div className={navBarModule.content}>

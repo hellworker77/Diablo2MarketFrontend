@@ -1,0 +1,37 @@
+.container{
+    margin: 0 auto;
+    display: grid;
+    grid-auto-flow: row;
+    width: 300px;
+    grid-template-rows: 300px auto;
+}
+
+
+
+.container img{
+    display: block;
+    padding: 10px;
+    height: 280px;
+    width: 280px;
+    margin: auto;
+}
+
+.buttons{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.button{
+    margin: 0 auto;
+    display: block;
+    background-color: rgba(255,255,255, .8);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    transition-duration: 500ms;
+}
+
+.button[data-state="active"]{
+    background-color: #d1be9f;
+}
