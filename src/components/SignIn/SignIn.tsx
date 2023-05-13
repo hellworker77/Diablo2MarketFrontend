@@ -4,15 +4,24 @@ import uiModule from "../../styles/Ui.module.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faKey} from "@fortawesome/free-solid-svg-icons";
 import {Link, useNavigate} from "react-router-dom";
-import {SignInRequestManager} from "../../utilities/RequestHandlerFactory/Account/SignInRequestManager";
-import {fetchData} from "../../utilities/FetchData";
-import {Token, TokenManager} from "../../utilities/TokenManager";
+import {SignInRequestManager} from "../../utilities/RequestManagers/AccountManagers/SignInRequestManager";
 
 const SignIn = (props: SignInProps) => {
     let nameRef = React.createRef<HTMLInputElement>();
     let passwordRef = React.createRef<HTMLInputElement>();
 
     const navigate = useNavigate();
+
+    let signIn = () => {
+        let requestManager = new SignInRequestManager(props.addNotify, typeof SignIn)
+        requestManager.buildConfig({password: props.password, username: props.name})
+
+        requestManager.queryCallback(props.loadAccountToken).then(successful => {
+            if(successful){
+                navigate("/profile")
+            }
+        })
+    }
 
     return (
         <div style={{display: "flex", marginTop: "15vh"}}>
@@ -43,24 +52,7 @@ const SignIn = (props: SignInProps) => {
                         <div className={uiModule.button}
                              style={{margin: "auto auto auto 0"}}>
                             <div className={uiModule.gray}>
-                                <div style={{margin: "auto 5px"}} onClick={() => {
-                                    let requestManager = new SignInRequestManager()
-                                    requestManager.createBody({
-                                        password: props.password,
-                                        username: props.name
-                                    }, "account");
-
-                                    let response = requestManager.getResponse()
-
-                                    fetchData<Token>(response, props.addNotify, typeof SignIn)
-                                        .then(token => {
-                                            if (token !== undefined) {
-                                                TokenManager.save(token)
-                                                props.loadAccountToken(token)
-                                                navigate("/profile")
-                                            }
-                                        })
-                                }}>
+                                <div style={{margin: "auto 5px"}} onClick={signIn}>
                                     Log in
                                 </div>
                             </div>

@@ -28,3 +28,11 @@
 .item:nth-child(even){
     background: rgba(0,0,0,0.5);
 }
+
+.addItemButton{
+    cursor: pointer;
+    opacity: .87;
+}
+.addItemButton:hover{
+    opacity: 1;
+}

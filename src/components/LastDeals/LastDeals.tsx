@@ -1,20 +1,33 @@
 import {LastDealsProps} from "../../types/props/LastDealsProps";
 import React, {useEffect} from "react";
-import {fetchData, loadFetchedData} from "../../utilities/FetchData";
-import {GetLastDealsRequestManager} from "../../utilities/RequestHandlerFactory/Trading/GetLastDealsRequestManager";
 import uiModule from "../../styles/Ui.module.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCoins} from "@fortawesome/free-solid-svg-icons";
 import DealContainer from "../Deal/DealContainer";
+import {GetLastDealsRequestManager} from "../../utilities/RequestManagers/TradingManagers/GetLastDealsRequestManager";
+import {Page} from "../../utilities/RequestManagers/Pages/Page";
+import {GetDealsCountRequestManager} from "../../utilities/RequestManagers/TradingManagers/GetDealsCountRequestManager";
 
 const LastDeals = (props: LastDealsProps) => {
+
+    const pageSize = 30
+
+
+    let requestManagerCount: GetDealsCountRequestManager = new GetDealsCountRequestManager(props.addNotify,
+        typeof LastDeals.name)
+
+    let requestManager: GetLastDealsRequestManager = new GetLastDealsRequestManager(props.addNotify,
+        typeof LastDeals,
+        new Page(0, pageSize, undefined)
+    )
+
     useEffect(() => {
-            let requestManager = new GetLastDealsRequestManager({index: 0, size: 1})
+            //requestManager.configureFrom(requestManagerCount)
 
-            let fetch = fetchData(requestManager.getResponse(), props.addNotify, typeof LastDeals)
+            requestManager.begin(props.loadLastDeals)
 
-            loadFetchedData(fetch, props.loadLastDeals)
-        }
+
+        }, []
     )
     return (
         <div className={uiModule.frame_brown}

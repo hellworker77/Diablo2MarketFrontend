@@ -8,13 +8,16 @@ import {selectItemActionCreate, selectItemShowModeActionCreate} from "../../../r
 import {ItemShowMode} from "../../../types/models/enums/ItemShowMode";
 import {selectUserIdActionCreate} from "../../../redux/accountReducer";
 import {GlobalAccountActionType} from "../../../types/reducerTypes/actionTypes/GlobalAccountActionType";
+import {NotifyPropsOwn} from "../../../types/props/NotificationProps";
+import {addNotifyActionCreate} from "../../../redux/notificationReducer";
+import {GlobalNotificationActionType} from "../../../types/reducerTypes/actionTypes/GlobalNotificationActionType";
 
 let mapStateToProps = (state: AppStateType): TradeItemPropsState => {
     return {
         token: state.accountReducer.token
     }
 }
-let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType | GlobalAccountActionType>): TradeItemPropsDispatch => {
+let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType | GlobalAccountActionType | GlobalNotificationActionType>): TradeItemPropsDispatch => {
     return {
         selectItemId: (id: string) => {
             dispatch(selectItemActionCreate(id))
@@ -24,6 +27,9 @@ let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType | GlobalAcc
         },
         selectUserId: (id: string) => {
             dispatch(selectUserIdActionCreate(id))
+        },
+        addNotify: (notify: NotifyPropsOwn) => {
+            dispatch(addNotifyActionCreate(notify))
         }
     }
 }

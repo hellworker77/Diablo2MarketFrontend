@@ -9,7 +9,7 @@ import Balance from "./Balance";
 
 let mapStateToProps = (state: AppStateType) : BalancePropsState => {
     return {
-        me: state.accountReducer.me
+        me: state.accountReducer.me?.user ?? null
     }
 }
 let mapDispatchToProps = (dispatch : Dispatch<GlobalAccountActionType>) : BalancePropsDispatch => {

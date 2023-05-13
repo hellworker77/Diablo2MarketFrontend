@@ -22,7 +22,6 @@
     color: #7D7161;
 }
 
-
 .tinyBoxContainer{
     background: url("../images/ui/tt_tl_tiny_i_m_bb.webp") top left no-repeat,
     url("../images/ui/tt_tr_tiny_i_m_bb.webp") top right no-repeat,
@@ -138,4 +137,15 @@
 }
 .button:hover{
     opacity: 1;
+}
+
+.scrollBar::-webkit-scrollbar{
+    width: 5px;
+}
+.scrollBar::-webkit-scrollbar-thumb{
+    background-color: #888;
+    border-radius: 5px;
+}
+.scrollBar::-webkit-scrollbar-track{
+    background-color: transparent;
 }

@@ -1,44 +1,15 @@
 .container {
     padding: 15px 10px 10px 10px;
     display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-    "b tp"
-    "b bp";
+    grid-auto-flow: row;
     column-gap: 10px;
     font-weight: 600;
 }
 
-.top_part {
-    grid-area: tp;
+.top_part,
+.bottom_part{
     display: flex;
 }
-
-.bottom_part {
-    grid-area: bp;
-    display: flex;
-}
-
-.button {
-    grid-area: b;
-    display: flex;
-    cursor: pointer;
-}
-
-.button img {
-    margin: auto;
-    height: 20px;
-    opacity: .87;
-}
-
-.button img:hover {
-    opacity: 1;
-}
-
-.price {
-
-}
-
 .link {
     color: #cfd0fe;
     text-decoration: none;

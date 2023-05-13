@@ -38,7 +38,6 @@ let mapDispatchToProps = (dispatch: Dispatch<GlobalAccountActionType | GlobalNot
     }
 }
 
-
 let SignInContainer = connect(mapStateToProps, mapDispatchToProps)(SignIn);
 
 export default SignInContainer;

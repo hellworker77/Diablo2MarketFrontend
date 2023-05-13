@@ -7,13 +7,22 @@ import {UpdateEmailActionType} from "./Account/UpdateEmailActionType";
 import {UpdatePasswordActionType} from "./Account/UpdatePasswordActionType";
 import {LoadAccountTokenActionType} from "./Account/LoadAccountTokenActionType";
 import {UpdateVerifyPasswordActionType} from "./Account/UpdateVerifyPasswordActionType";
+import {LoadUserDealsActionType} from "./Account/LoadUserDealsActionType";
+import {LoadUserItemsActionType} from "./Account/LoadUserItemsActionType";
+import {LoadMyDealsActionType} from "./Account/LoadMyDealsActionType";
+import {LoadMyItemsActionType} from "./Account/LoadMyItemsActionType";
 
-export type GlobalAccountActionType = AddBalanceActionType |
+export type GlobalAccountActionType =
+    AddBalanceActionType |
     LoadUserActionType |
     LoadMeActionType |
+    LoadMyDealsActionType |
+    LoadMyItemsActionType |
     SelectUserIdActionType |
     UpdateNameActionType |
     UpdateEmailActionType |
     UpdatePasswordActionType |
     UpdateVerifyPasswordActionType |
-    LoadAccountTokenActionType
+    LoadAccountTokenActionType |
+    LoadUserDealsActionType |
+    LoadUserItemsActionType

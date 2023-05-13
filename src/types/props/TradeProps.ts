@@ -1,11 +1,13 @@
 import {ItemType} from "../models/ItemType";
 import {NotifyPropsOwn} from "./NotificationProps";
+import {Token} from "../../utilities/TokenManager";
 
 export type TradeProps = TradePropsState & TradePropsDispatch
 
 
 export type TradePropsState = {
-    items: Array<ItemType>,
+    items: Array<ItemType>
+    token: Token | null
 }
 
 export type TradePropsDispatch = {
