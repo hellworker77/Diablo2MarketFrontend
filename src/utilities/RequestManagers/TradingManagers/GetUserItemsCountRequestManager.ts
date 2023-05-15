@@ -5,7 +5,7 @@ type Params = {
     userId: string
 }
 
-export class GetUserDealsCountRequestManager extends AbstractRequestManager<number, Params>{
+export class GetUserItemsCountRequestManager extends AbstractRequestManager<number, Params>{
     buildConfig(params: Params): void {
         this.config = {
             method: this.method,
@@ -17,6 +17,5 @@ export class GetUserDealsCountRequestManager extends AbstractRequestManager<numb
     }
 
     protected method = "get";
-    protected readonly url = BaseEndpoint + "Deal/userDealsCount";
-
+    protected readonly url = BaseEndpoint + "Item/userItemsCount";
 }

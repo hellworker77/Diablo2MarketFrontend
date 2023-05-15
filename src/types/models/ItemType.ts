@@ -9,5 +9,6 @@ export type ItemType = {
     attributes: Array<ItemAttributeType>,
     name: string,
     ownerId: string,
-    postedDate: Date
+    postedDate: Date,
+    mediaId: string
 }

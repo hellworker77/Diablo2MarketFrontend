@@ -5,40 +5,53 @@
     gap: 20px;
 }
 
-.image_container{
+.image_container {
     display: flex;
 }
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
     row-gap: 15px;
     column-gap: 10px;
     grid-template-areas:
-    "top top"
-    "left right";
+    "top"
+    "left"
+    "right";
 }
+
 .frame_top,
 .frame_left,
-.frame_right{
+.frame_right {
     width: 100%;
 }
 
-.frame_content{
+.frame_content {
     flex-direction: column;
     display: flex;
     margin: 15px 10px;
     overflow-y: auto;
 }
+
 .frame_top {
     grid-area: top;
 }
+
 .frame_left {
-    max-height: 400px;
     grid-area: left;
 }
+
 .frame_right {
     grid-area: right;
+}
+
+.frame_left,
+.frame_right{
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.paginator {
+    margin: 0 auto 0 0;
 }
 

@@ -7,11 +7,12 @@ import TradeContainer from "./components/Trade/TradeContainer";
 import ItemContainer from "./components/Item/ItemContainer";
 import RightSideBarContainer from "./components/RightSideBar/RightSideBarContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import UserContainer from "./components/User/UserContainer";
+import UserContainer from "./components/Profile/UserContainer";
 import SignInContainer from "./components/SignIn/SignInContainer";
 import SignUpContainer from "./components/SignUp/SignUpContainer";
 import NotificationContainer from "./components/Notification/NotificationContainer";
 import LastDealsContainer from "./components/LastDeals/LastDealsContainer";
+import AddItemContainer from "./components/AddItem/AddItemContainer";
 
 function App() {
     return (
@@ -25,11 +26,12 @@ function App() {
                         <Route key={"signUp"} path={"/register"} element={<SignUpContainer/>}/>
                         <Route key={"signIn"} path={"/login"} element={<SignInContainer/>}/>
                         <Route key={"user"} path={"/user"} element={<UserContainer/>}/>
+                        <Route key={"addItem"} path={"/addItem"} element={<AddItemContainer/>}/>
                         <Route key={"history"} path={"/history"} element={<LastDealsContainer/>}/>
                         <Route key={"profile"} path={"/profile"} element={<ProfileContainer/>}/>
                         <Route key={"payment"} path={"/payment"} element={<PaymentContainer/>}/>
                         <Route key={"trading"} path={"/trade"} element={<TradeContainer/>}/>
-                        <Route key={"detailItem"} path={"/ItemShow"} element={<ItemContainer/>}/>
+                        <Route key={"detailItem"} path={"/itemShow"} element={<ItemContainer/>}/>
                     </Routes>
                 </div>
                 <div className={appModule.right}>

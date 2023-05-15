@@ -10,3 +10,22 @@
 .container *{
     text-align: left;
 }
+
+.confirm{
+    display: grid;
+    grid-template-rows: auto 3fr auto 1fr;
+    gap: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    aspect-ratio: 16/9;
+    transform: translate(-50%, -50%);
+}
+.confirm .title{
+    margin: 10px auto;
+    font-size: 20px !important;
+}
+.confirm .description p{
+    text-align: center;
+}

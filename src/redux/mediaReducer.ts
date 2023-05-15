@@ -10,11 +10,16 @@ import {
     SelectMediaActionType
 } from "../types/reducerTypes/actionTypes/Media/SelectMediaActionType";
 import {MediaType} from "../types/models/MediaType";
+import {
+    SET_BASE_64_IMAGE,
+    SetBase64ImageActionType
+} from "../types/reducerTypes/actionTypes/Media/SetBase64ImageActionType";
 
 let initialState: MediaStateType = {
     selectedId: "",
     selected: null,
-    medias: []
+    medias: [],
+    base64Image: null
 }
 
 const MediaReducer = (state = initialState, action: GlobalMediaActionType): MediaStateType => {
@@ -48,6 +53,11 @@ const MediaReducer = (state = initialState, action: GlobalMediaActionType): Medi
                 selectedId: action.mediaId,
                 selected: state.medias.find(x=>x.id === action.mediaId) ?? state.selected
             }
+        case SET_BASE_64_IMAGE:
+            return {
+                ...state,
+                base64Image: action.base64Image
+            }
         default:
             return {
                 ...state
@@ -65,6 +75,10 @@ export const disposeMediasActionCreate = (): DisposeMediasActionType => ({
 
 export const selectMediaActionCreate = (mediaId: string): SelectMediaActionType => ({
     type: SELECT_MEDIA_ACTION_TYPE, mediaId: mediaId
+})
+
+export const setBase64Image = (base64Image: string): SetBase64ImageActionType => ({
+    type: SET_BASE_64_IMAGE, base64Image: base64Image
 })
 
 export default MediaReducer;

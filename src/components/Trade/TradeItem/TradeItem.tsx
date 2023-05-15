@@ -46,12 +46,12 @@ const TradeItem = (props: TradeItemProps) => {
                         <img alt={"icon"} src={goldIcon}></img>
                     </div>
                 </div>
-                <NavLink to={`/ItemShow`}
+                <NavLink to={`/itemShow`}
                          className={tradeItemModule.link}
                          style={{margin: "auto 0 auto 10px"}}
                          onClick={() => {
                              props.selectItemId(props.item.id)
-                             props.changeItemShowMode(ItemShowMode.View)
+                             props.changeItemShowMode(props.itemShowMode)
                          }}>
                     {props.item.name}
                 </NavLink>

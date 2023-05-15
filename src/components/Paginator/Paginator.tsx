@@ -63,29 +63,33 @@ function Paginator<T, Params extends IPage>(props: PaginatorProps<T, Params>) {
 
     }
 
-    return (
-        <div className={paginatorModule.container}>
-            <button onClick={() => props.requestManager.undo(props.loadData)}>
-                <FontAwesomeIcon icon={faRotateLeft}/>
-            </button>
-            <button onClick={() => props.requestManager.begin(props.loadData)}>
-                <FontAwesomeIcon icon={faAnglesLeft}/>
-            </button>
-            <button onClick={() => props.requestManager.pageBack(props.loadData)}>
-                <FontAwesomeIcon icon={faAngleLeft}/>
-            </button>
-            {generateButtons()}
-            <button onClick={() => props.requestManager.pageNext(props.loadData)}>
-                <FontAwesomeIcon icon={faAngleRight}/>
-            </button>
-            <button onClick={() => props.requestManager.end(props.loadData)}>
-                <FontAwesomeIcon icon={faAnglesRight}/>
-            </button>
-            <button onClick={() => props.requestManager.redo(props.loadData)}>
-                <FontAwesomeIcon icon={faRotateRight}/>
-            </button>
-        </div>
-    )
+    if(pageCount > 0){
+        return (
+            <div className={paginatorModule.container}>
+                <button onClick={() => props.requestManager.undo(props.loadData)}>
+                    <FontAwesomeIcon icon={faRotateLeft}/>
+                </button>
+                <button onClick={() => props.requestManager.begin(props.loadData)}>
+                    <FontAwesomeIcon icon={faAnglesLeft}/>
+                </button>
+                <button onClick={() => props.requestManager.pageBack(props.loadData)}>
+                    <FontAwesomeIcon icon={faAngleLeft}/>
+                </button>
+                {generateButtons()}
+                <button onClick={() => props.requestManager.pageNext(props.loadData)}>
+                    <FontAwesomeIcon icon={faAngleRight}/>
+                </button>
+                <button onClick={() => props.requestManager.end(props.loadData)}>
+                    <FontAwesomeIcon icon={faAnglesRight}/>
+                </button>
+                <button onClick={() => props.requestManager.redo(props.loadData)}>
+                    <FontAwesomeIcon icon={faRotateRight}/>
+                </button>
+            </div>
+        )
+    }
+
+    return <span></span>
 
 }
 

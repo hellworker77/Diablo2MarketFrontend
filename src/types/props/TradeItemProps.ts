@@ -20,6 +20,7 @@ export type TradeItemPropsDispatch = {
 export type TradeItemPropsOwn = {
     item: ItemType
     mode: TradeItemShowMode
+    itemShowMode: ItemShowMode,
 }
 
 

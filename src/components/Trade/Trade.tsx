@@ -12,10 +12,12 @@ import {Page} from "../../utilities/RequestManagers/Pages/Page";
 import buttonEnabledIcon from '../../images/icons/skillcalc.png'
 import Paginator from "../Paginator/Paginator";
 import {GetItemsCountRequestManager} from "../../utilities/RequestManagers/TradingManagers/GetItemsCountRequestManager";
+import {ItemShowMode} from "../../types/models/enums/ItemShowMode";
+import {useNavigate} from "react-router-dom";
 
 const Trade = (props: TradeProps) => {
-
-    const pageSize = 1
+    let navigate = useNavigate();
+    const pageSize = 3
     const requestManagerCount = useMemo(() => {
         return new GetItemsCountRequestManager(props.addNotify,
             typeof Trade.name)
@@ -30,7 +32,7 @@ const Trade = (props: TradeProps) => {
     }, [])
 
     useEffect(() => {
-        requestManager.configureFrom(requestManagerCount)
+        requestManager.configureFrom(requestManagerCount, null)
     }, [])
 
     return (
@@ -40,6 +42,7 @@ const Trade = (props: TradeProps) => {
                 <FontAwesomeIcon icon={faScaleBalanced}/> Trades
             </div>
             <div className={tradeModule.addItemButton}
+                 onClick={() => navigate("/addItem")}
                  style={{margin: "10px 0", display: `${props.token === null ? "none" : "flex"}`}}>
                 <img alt={"image"}
                      style={{marginRight: "10px"}}
@@ -52,6 +55,7 @@ const Trade = (props: TradeProps) => {
                 {
                     props.items.map(x =>
                         <div key={x.id} className={tradeModule.item}><TradeItemContainer key={x.id}
+                                                                                         itemShowMode={ItemShowMode.Order}
                                                                                          mode={TradeItemShowMode.Detail}
                                                                                          item={x}/></div>
                     )}
