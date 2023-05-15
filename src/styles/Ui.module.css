@@ -104,30 +104,37 @@
     border-radius: 2px;
     height: 30px;
     background-color: transparent;
-    opacity: .87;
+    opacity: .77;
     display: flex;
+}
+
+.button[data-disabled="true"]{
+    filter: grayscale(100);
 }
 
 .button .green,
 .button .brown,
 .button .gray{
     border: 1px solid black;
-    box-shadow: 0 4px 0 -1px #191310, 0 4px 0 0 #000;
     width: 100%;
     display: grid;
     grid-auto-flow: column;
     gap: 10px;
+    background: url("../images/ui/button.webp") no-repeat;
 }
 .button .green{
-    background-color:  #204e35;
+    background: url("../images/ui/buttong.webp") #103c27 no-repeat;
+    box-shadow: inset 0 0 2px rgba(255, 255, 255, .1), 0 4px 0 -1px #081e13, 0 4px 0 0 #000;
     color: #e7ffe9;
 }
 .button .brown{
+    box-shadow: 0 4px 0 -1px #191310, 0 4px 0 0 #000;
     color: #ebddc6;
-    background-color: #433833;
+    background: url("../images/ui/button2.webp") #433833 no-repeat;
 }
 .button .gray{
-    background-color: #222C32;
+    box-shadow: inset 0 0 2px rgba(255, 255, 255, .1), 0 4px 0 -1px #161e22, 0 4px 0 0 #000;
+    background: url("../images/ui/button.webp") #222C32 no-repeat;
     color: #d3f3ff;
 }
 .button .green *,
@@ -138,7 +145,29 @@
 .button:hover{
     opacity: 1;
 }
-
+.select{
+    background: url("../images/ui/tt_tl_tiny_i_m_bb.webp") top left no-repeat,
+    url("../images/ui/tt_tr_tiny_i_m_bb.webp") top right no-repeat,
+    url("../images/ui/tt_bl_tiny_i_m_bb.webp") bottom left no-repeat,
+    url("../images/ui/tt_br_tiny_i_m_bb.webp") bottom right no-repeat,
+    url("../images/ui/tt_border_t_tiny_i.webp") top repeat-x,
+    url("../images/ui/tt_border_b_tiny_i.webp") bottom repeat-x,
+    url("../images/ui/tt_border_l_tiny_i.webp") left repeat-y,
+    url("../images/ui/tt_border_r_tiny_i.webp") right repeat-y,
+    rgba(0, 0, 0, 0.43);
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    color: #f0e7d8;
+    font-size: 16px;
+    opacity: .77;
+}
+.select:focus{
+    opacity: 1;
+}
+.select option{
+    background-color: #110F0D;
+}
 .scrollBar::-webkit-scrollbar{
     width: 5px;
 }
@@ -149,3 +178,4 @@
 .scrollBar::-webkit-scrollbar-track{
     background-color: transparent;
 }
+

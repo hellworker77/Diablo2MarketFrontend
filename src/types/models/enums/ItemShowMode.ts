@@ -1,4 +1,4 @@
 export enum ItemShowMode{
-    Edit,
+    Order,
     View
 }

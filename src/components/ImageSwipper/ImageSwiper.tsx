@@ -1,6 +1,5 @@
 import defaultAvatar from "../../images/defaultAvatar.png"
 import imageSwiperModule from "../../styles/ImageSwiper.module.css"
-import uiModule from "../../styles/Ui.module.css"
 import {useEffect} from "react";
 import {ImageSwiperProps} from "../../types/props/ImageSwiper";
 import {MediaLoader} from "../../utilities/MediaLoader/MediaLoader";
@@ -50,7 +49,7 @@ const ImageSwiper = (props: ImageSwiperProps) => {
     }
 
     return (
-        <div className={uiModule.frame_brown}>
+        <div>
             {props.imageShorts.length === 0 ? renderDefault() : render()}
         </div>
     )

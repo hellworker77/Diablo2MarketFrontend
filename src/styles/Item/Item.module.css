@@ -1,0 +1,14 @@
+.orderButton{
+    border: none;
+    margin: 0 10px 10px auto;
+    padding: 6px 12px;
+    font-size: 18px;
+}
+
+.orderButton:focus{
+    outline: none;
+}
+
+.orderButton:hover{
+
+}

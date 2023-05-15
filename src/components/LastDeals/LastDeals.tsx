@@ -7,6 +7,7 @@ import DealContainer from "../Deal/DealContainer";
 import {GetLastDealsRequestManager} from "../../utilities/RequestManagers/TradingManagers/GetLastDealsRequestManager";
 import {Page} from "../../utilities/RequestManagers/Pages/Page";
 import {GetDealsCountRequestManager} from "../../utilities/RequestManagers/TradingManagers/GetDealsCountRequestManager";
+import {DealShowMode} from "../../types/props/DealProps";
 
 const LastDeals = (props: LastDealsProps) => {
 
@@ -36,7 +37,9 @@ const LastDeals = (props: LastDealsProps) => {
                 <FontAwesomeIcon icon={faCoins}/>Last Deals
             </div>
             {props.lastDeals.map(deal =>
-                <DealContainer key={deal.id} deal={deal}/>
+                <DealContainer key={deal.id}
+                               deal={deal}
+                               mode={DealShowMode.Another}/>
             )}
         </div>
     )

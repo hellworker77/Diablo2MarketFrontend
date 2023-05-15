@@ -8,6 +8,7 @@ import {
     GetLastDayDealsRequestManager
 } from "../../utilities/RequestManagers/TradingManagers/GetLastDayDealsRequestManager";
 import {Page} from "../../utilities/RequestManagers/Pages/Page";
+import {DealShowMode} from "../../types/props/DealProps";
 
 const RightSideBar = (props: RightSideBarProps) => {
     const pageSize = 30
@@ -26,10 +27,12 @@ const RightSideBar = (props: RightSideBarProps) => {
         <div className={uiModule.frame_brown}
              style={{margin: "20px", padding: "10px"}}>
             <div className={`${uiModule.header} ${uiModule.row_content_container}`}>
-                <FontAwesomeIcon icon={faCoins}/>Last Deals
+                <FontAwesomeIcon icon={faCoins}/>Deals Today
             </div>
             {props.last24Deals.map(deal =>
-                <DealContainer key={deal.id} deal={deal}/>
+                <DealContainer key={deal.id}
+                               deal={deal}
+                               mode={DealShowMode.Another}/>
             )}
         </div>
     )

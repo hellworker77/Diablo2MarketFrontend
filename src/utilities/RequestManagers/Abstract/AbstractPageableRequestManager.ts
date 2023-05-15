@@ -38,29 +38,20 @@ export abstract class AbstractPageableRequestManager<T, Params extends IPage>
     protected rebuildConfig(index: number, save: boolean) {
         if (this.isExistedPage(index)) {
             this.index = index
-
-        } else {
-            try{
-                let prev = this.indexCaretaker.undo()
-                this.index = prev.index
-            }catch (error){
-                this.index = 0
+            if(save){
+                this.indexCaretaker.save(new Memento(this.index))
             }
 
         }
         this.onIndexChanged(this.index + 1)
-
-        if(save){
-            this.indexCaretaker.save(new Memento(this.index))
-        }
-
         this.buildConfig(this.generateParams())
     }
 
     protected abstract generateParams(): Params
 
-    configureFrom(requestManager: AbstractRequestManager<number, any>): void {
-        requestManager.buildConfig(null)
+    configureFrom<Params>(requestManager: AbstractRequestManager<number, Params>,
+                          params: Params): void {
+        requestManager.buildConfig(params)
         requestManager.queryData().then(count => {
             if (count != undefined) {
                 this.pageCount = Math.ceil(count / this.pageSize)

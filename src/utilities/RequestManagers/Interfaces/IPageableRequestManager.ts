@@ -1,7 +1,8 @@
 import {AbstractRequestManager} from "../Abstract/AbstractRequestManager";
 
 export interface IPageableRequestManager<T> {
-    configureFrom(requestManager: AbstractRequestManager<number, any>): void
+    configureFrom<Params>(requestManager: AbstractRequestManager<number, Params>,
+                          params: Params): void
 
     getPageCount(): number
 
