@@ -4,5 +4,6 @@ export type MediaStateType = {
     selectedId: string,
     selected: MediaType | null
     medias: Array<MediaType>,
-    base64Image: string | null
+    base64Image: string | null,
+    itemPhotoToUpload: File | null
 }

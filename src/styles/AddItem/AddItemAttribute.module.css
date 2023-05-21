@@ -1,0 +1,19 @@
+.button{
+    color: #d1be9f;
+    cursor: pointer;
+}
+.button:hover {
+    animation: colorChange 2s ease-in-out infinite;
+}
+
+@keyframes colorChange {
+    0% {
+        color: #d1be9f;
+    }
+    50% {
+        color: #CC2A00;
+    }
+    100% {
+        color: #d1be9f;
+    }
+}

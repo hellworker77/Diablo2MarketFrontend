@@ -1,7 +1,7 @@
 import defaultAvatar from "../../images/defaultAvatar.png"
 import imageSwiperModule from "../../styles/ImageSwiper.module.css"
 import {useEffect} from "react";
-import {ImageSwiperProps} from "../../types/props/ImageSwiper";
+import {ImageSwiperProps, LoadSource} from "../../types/props/ImageSwiper";
 import {MediaLoader} from "../../utilities/MediaLoader/MediaLoader";
 import {GetMediaByIdRequestManager} from "../../utilities/RequestManagers/MediaManagers/GetMediaByIdRequestManager";
 import {v4} from "uuid";
@@ -12,17 +12,18 @@ const ImageSwiper = (props: ImageSwiperProps) => {
     useEffect(() => {
         const mediaLoader = new MediaLoader(props.imageShorts, requestManager, props.addMedia)
         mediaLoader.query()
-    }, [props.imageShorts])
-
-    useEffect(() => {
         return () => {
             props.disposeMedias()
         }
     }, [])
-    const renderDefault = (): JSX.Element => {
+    const renderDefault = (loadSource: LoadSource): JSX.Element => {
         return (
-            <div className={imageSwiperModule.container}>
-                <img src={defaultAvatar} alt={typeof defaultAvatar}/>
+            <div>
+                {
+                    loadSource === LoadSource.User? <div className={imageSwiperModule.container}>
+                        <img src={defaultAvatar} alt={typeof defaultAvatar}/>
+                    </div>: ""
+                }
             </div>
         )
     }
@@ -32,7 +33,7 @@ const ImageSwiper = (props: ImageSwiperProps) => {
                 {
                     MediaLoader.loadedImageIsCorrect(props.selected) ?
                         <img src={MediaLoader.convertToImage(props.selected)} alt={typeof props.selected}/> :
-                        <img src={defaultAvatar} alt={typeof defaultAvatar}/>
+                        renderDefault(props.loadSource)
                 }
                 <div className={imageSwiperModule.buttons}>
                     {
@@ -50,7 +51,7 @@ const ImageSwiper = (props: ImageSwiperProps) => {
 
     return (
         <div>
-            {props.imageShorts.length === 0 ? renderDefault() : render()}
+            {props.imageShorts.length === 0 ? renderDefault(props.loadSource) : render()}
         </div>
     )
 }

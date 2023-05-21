@@ -33,6 +33,16 @@ export class MediaLoader implements IMediaLoader {
     public static convertToImage(media: MediaType | null) : string {
         return `data:image/png;base64,${media?.data??""}`
     }
+    public static convertFileToImage(file: File, callback: (base64Image: string) => void) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (typeof reader.result === "string") {
+                const base64Image = reader.result.split(",")[1];
+                callback(`data:image/png;base64,${base64Image}`);
+            }
+        };
+        reader.readAsDataURL(file);
+    }
 
     private readonly _addToReducerCallback: (media: MediaType) => void
     private readonly _mediasShort: Array<MediaShortType>

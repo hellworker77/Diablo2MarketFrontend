@@ -20,13 +20,13 @@ const Trade = (props: TradeProps) => {
     const pageSize = 3
     const requestManagerCount = useMemo(() => {
         return new GetItemsCountRequestManager(props.addNotify,
-            typeof Trade.name)
+            Trade.name)
     }, [])
 
 
     const requestManager = useMemo(() => {
         return new GetItemChunkRequestManager(props.addNotify,
-            typeof Trade,
+            Trade.name,
             new Page(0, pageSize, undefined)
         )
     }, [])

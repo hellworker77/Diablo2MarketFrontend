@@ -9,6 +9,9 @@ import {useNavigate} from "react-router-dom";
 import {GetItemByIdRequestManager} from "../../utilities/RequestManagers/TradingManagers/GetItemByIdRequestManager";
 import {ItemShowMode} from "../../types/models/enums/ItemShowMode";
 import {CreateDealRequestManager} from "../../utilities/RequestManagers/TradingManagers/CreateDealRequestManager";
+import ImageSwiperContainer from "../ImageSwipper/ImageSwiperContainer";
+import {MediaTypeEnum} from "../../types/models/enums/MediaTypeEnum";
+import {LoadSource} from "../../types/props/ImageSwiper";
 
 
 const Item = (props: ItemProps) => {
@@ -46,8 +49,10 @@ const Item = (props: ItemProps) => {
                              }}/>
 
             <div className={uiModule.frame_gray}>
-                <div className={uiModule.preloader}
-                     style={{width: "200px"}}>
+                <div style={{margin: "20px auto 0 auto"}}>
+                    <ImageSwiperContainer
+                        imageShorts={[{type: MediaTypeEnum.Photo, id: props.loadedItem?.mediaId ?? ""}]}
+                        loadSource={LoadSource.Item}/>
                 </div>
                 <div style={{color: rarityToColorConverter(props.loadedItem?.rarity), margin: "5px auto"}}>
                     {props.loadedItem?.name}

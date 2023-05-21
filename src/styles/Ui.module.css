@@ -142,8 +142,11 @@
 .button .gray *{
     color: inherit;
 }
-.button:hover{
+.button :hover{
     opacity: 1;
+}
+.button[data-disabled="true"]{
+    cursor: not-allowed;
 }
 .select{
     background: url("../images/ui/tt_tl_tiny_i_m_bb.webp") top left no-repeat,
