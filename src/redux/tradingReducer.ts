@@ -24,6 +24,33 @@ import {
     LOAD_LAST_DEALS_ACTION_TYPE,
     LoadLastDealsActionType
 } from "../types/reducerTypes/actionTypes/Trading/LoadLastDealsActionType";
+import {ItemRarityEnum} from "../types/models/enums/ItemRarityEnum";
+import {
+    SET_ITEM_NAME_TO_UPLOAD,
+    SetItemNameToUploadActionType
+} from "../types/reducerTypes/actionTypes/Trading/SetItemNameToUploadActionType";
+import {
+    SET_ITEM_RARITY_TO_UPLOAD,
+    SetItemRarityToUploadActionType
+} from "../types/reducerTypes/actionTypes/Trading/SetItemRarityToUploadActionType";
+import {
+    ADD_ATTRIBUTE_ITEM,
+    AddAttributeItemActionType
+} from "../types/reducerTypes/actionTypes/Trading/AddAttributeItemActionType";
+import {v4} from "uuid";
+import {
+    SET_ITEM_ATTRIBUTE,
+    SetItemAttributeActionType
+} from "../types/reducerTypes/actionTypes/Trading/SetItemAttributeActionType";
+import {
+    DELETE_ITEM_ATTRIBUTE,
+    DeleteItemAttributeActionType
+} from "../types/reducerTypes/actionTypes/Trading/DeleteItemAttributeActionType";
+import {List} from "linqts";
+import {
+    SET_ITEM_PRICE_TO_UPLOAD,
+    SetItemPriceToUploadActionType
+} from "../types/reducerTypes/actionTypes/Trading/SetItemPriceToUploadActionType";
 
 
 let initialState: TradingStateType = {
@@ -32,7 +59,11 @@ let initialState: TradingStateType = {
     itemShowMode: ItemShowMode.View,
     loadedItem: null,
     last24deals: [],
-    deals: []
+    deals: [],
+    itemNameToUpload: "",
+    itemPriceToUpload: 0,
+    itemAttributesToUpload: [],
+    itemRarityToUpload: ItemRarityEnum.Common
 }
 
 const TradingReducer = (state = initialState, action: GlobalTradingActionType): TradingStateType => {
@@ -67,6 +98,45 @@ const TradingReducer = (state = initialState, action: GlobalTradingActionType): 
                 ...state,
                 deals: [...action.deals]
             }
+        case SET_ITEM_NAME_TO_UPLOAD:
+            return {
+                ...state,
+                itemNameToUpload: action.name
+            }
+        case SET_ITEM_PRICE_TO_UPLOAD:
+            let price = isNaN(action.price) ? state.itemPriceToUpload : action.price
+            return {
+                ...state,
+                itemPriceToUpload: price
+            }
+        case SET_ITEM_RARITY_TO_UPLOAD:
+            return {
+                ...state,
+                itemRarityToUpload: action.rarity
+            }
+        case ADD_ATTRIBUTE_ITEM:
+            state.itemAttributesToUpload.push({id: v4(), name:"", description: ""})
+            return {
+                ...state,
+                itemAttributesToUpload: [...state.itemAttributesToUpload]
+            }
+        case SET_ITEM_ATTRIBUTE:
+            let itemAttributesToUpload = state.itemAttributesToUpload.map(x=>{
+                if(x?.id === action.id){
+                    return {...x, name: action.name}
+                }
+                return x
+            })
+            return {
+                ...state,
+                itemAttributesToUpload: [...itemAttributesToUpload]
+            }
+        case DELETE_ITEM_ATTRIBUTE:
+            return {
+                ...state,
+                itemAttributesToUpload: [...new List(state.itemAttributesToUpload)
+                    .Where(x=>x?.id !== action.id).ToArray()]
+            }
         default:
             return {
                 ...state
@@ -96,6 +166,30 @@ export const loadLast24HoursDealsActionCreate = (deals: Array<DealType>): LoadLa
 
 export const loadLastDealsActionCreate = (deals: Array<DealType>): LoadLastDealsActionType => ({
     type: LOAD_LAST_DEALS_ACTION_TYPE, deals: deals
+})
+
+export const setItemNameToUploadActionCreate = (name: string): SetItemNameToUploadActionType => ({
+    type: SET_ITEM_NAME_TO_UPLOAD, name: name
+})
+
+export const setItemRarityToUploadActionCreate = (rarity: ItemRarityEnum): SetItemRarityToUploadActionType => ({
+    type: SET_ITEM_RARITY_TO_UPLOAD, rarity: rarity
+})
+
+export const setItemPriceToUploadActionCreate = (price: number): SetItemPriceToUploadActionType => ({
+    type: SET_ITEM_PRICE_TO_UPLOAD, price: price
+})
+
+export const addItemAttributeActionCreate = (): AddAttributeItemActionType => ({
+    type: ADD_ATTRIBUTE_ITEM
+})
+
+export const setItemAttributeActionCreate = (name: string, id: string): SetItemAttributeActionType => ({
+    type: SET_ITEM_ATTRIBUTE, name: name, id: id
+})
+
+export const deleteItemAttributeActionCreate = (id: string): DeleteItemAttributeActionType => ({
+    type: DELETE_ITEM_ATTRIBUTE, id: id
 })
 
 export default TradingReducer;

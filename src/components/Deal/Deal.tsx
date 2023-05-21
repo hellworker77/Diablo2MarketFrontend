@@ -9,6 +9,7 @@ import {NavLink} from "react-router-dom";
 import {DealStatusEnum} from "../../types/models/enums/DealStatusEnum";
 import {ApproveDealRequestManager} from "../../utilities/RequestManagers/TradingManagers/ApproveDealRequestManager";
 import {DealApproveConfirm} from "./DealApproveConfirm";
+import goldIcon from "../../images/icons/golddrop.png";
 
 const Deal = (props: DealProps) => {
 
@@ -36,7 +37,7 @@ const Deal = (props: DealProps) => {
             {
                 confirmedWindowShow ?
                     <DealApproveConfirm
-                        onConfirmed={()=> approveDeal()}
+                        onConfirmed={() => approveDeal()}
                         onCanceled={() => {
                             setConfirmedWindowShow(false)
                         }}/> : ""
@@ -44,6 +45,9 @@ const Deal = (props: DealProps) => {
             <div className={uiModule.row_content_container}>
                 <div className={uiModule.tinyBoxContainer}>
                     {props.deal.goods.price}
+                    <img alt={"icon"}
+                         style={{marginRight: "0"}}
+                         src={goldIcon}></img>
                 </div>
                 <div>
                     <NavLink to={`/ItemShow`}

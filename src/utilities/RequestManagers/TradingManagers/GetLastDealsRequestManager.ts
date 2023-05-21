@@ -8,7 +8,7 @@ export class GetLastDealsRequestManager extends AbstractPageableRequestManager<D
         return new Page(this.index, this.pageSize, undefined)
     }
 
-    protected method = BaseEndpoint + "Deal/chunk";
-    protected readonly url = "get";
+    protected method = "get";
+    protected readonly url = BaseEndpoint + "Deal/chunk";
 
 }

@@ -1,9 +1,17 @@
 import {MediaShortType, MediaType} from "../models/MediaType";
 import {NotifyPropsOwn} from "./NotificationProps";
 
+export enum LoadSource
+{
+    Item,
+    User,
+    Message
+}
+
 export type ImageSwiperProps = ImageSwiperPropsOwn & ImageSwiperPropsDispatch & ImageSwiperPropsState
 
 export type ImageSwiperPropsOwn = {
+    loadSource: LoadSource
     imageShorts: Array<MediaShortType>
 }
 

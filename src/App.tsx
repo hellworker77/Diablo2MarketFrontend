@@ -14,6 +14,7 @@ import NotificationContainer from "./components/Notification/NotificationContain
 import LastDealsContainer from "./components/LastDeals/LastDealsContainer";
 import AddItemContainer from "./components/AddItem/AddItemContainer";
 
+
 function App() {
     return (
         <BrowserRouter>
@@ -35,7 +36,15 @@ function App() {
                     </Routes>
                 </div>
                 <div className={appModule.right}>
-                    <RightSideBarContainer/>
+                    <Routes>
+                        <Route key={"rightSideBar"} path={"/user"} element={<RightSideBarContainer/>}/>
+                        <Route key={"rightSideBar"} path={"/addItem"} element={<RightSideBarContainer/>}/>
+                        <Route key={"rightSideBar"} path={"/history"} element={<RightSideBarContainer/>}/>
+                        <Route key={"rightSideBar"} path={"/profile"} element={<RightSideBarContainer/>}/>
+                        <Route key={"rightSideBar"} path={"/itemShow"} element={<RightSideBarContainer/>}/>
+                        <Route key={"rightSideBar"} path={"/payment"} element={<RightSideBarContainer/>}/>
+                        <Route key={"rightSideBar"} path={"/trade"} element={<RightSideBarContainer/>}/>
+                    </Routes>
                 </div>
                 <NotificationContainer/>
             </div>

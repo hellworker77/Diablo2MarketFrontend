@@ -1,35 +1,38 @@
 import {LastDealsProps} from "../../types/props/LastDealsProps";
-import React, {useEffect} from "react";
+import React, {useEffect, useMemo} from "react";
 import uiModule from "../../styles/Ui.module.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCoins} from "@fortawesome/free-solid-svg-icons";
 import DealContainer from "../Deal/DealContainer";
 import {GetLastDealsRequestManager} from "../../utilities/RequestManagers/TradingManagers/GetLastDealsRequestManager";
 import {Page} from "../../utilities/RequestManagers/Pages/Page";
-import {GetDealsCountRequestManager} from "../../utilities/RequestManagers/TradingManagers/GetDealsCountRequestManager";
+import {
+    GetLastDealsCountRequestManager
+} from "../../utilities/RequestManagers/TradingManagers/GetLastDealsCountRequestManager";
 import {DealShowMode} from "../../types/props/DealProps";
+import Paginator from "../Paginator/Paginator";
 
 const LastDeals = (props: LastDealsProps) => {
 
-    const pageSize = 30
+    const pageSize = 3
+
+    const requestManagerCount = useMemo(() => {
+        return new GetLastDealsCountRequestManager(props.addNotify,
+            LastDeals.name)
+    }, [])
 
 
-    let requestManagerCount: GetDealsCountRequestManager = new GetDealsCountRequestManager(props.addNotify,
-        typeof LastDeals.name)
-
-    let requestManager: GetLastDealsRequestManager = new GetLastDealsRequestManager(props.addNotify,
-        typeof LastDeals,
-        new Page(0, pageSize, undefined)
-    )
+    const requestManager = useMemo(() => {
+        return new GetLastDealsRequestManager(props.addNotify,
+            LastDeals.name,
+            new Page(0, pageSize, undefined)
+        )
+    }, [])
 
     useEffect(() => {
-            //requestManager.configureFrom(requestManagerCount)
+        requestManager.configureFrom(requestManagerCount, null)
+    }, [])
 
-            requestManager.begin(props.loadLastDeals)
-
-
-        }, []
-    )
     return (
         <div className={uiModule.frame_brown}
              style={{margin: "20px", padding: "10px"}}>
@@ -41,6 +44,7 @@ const LastDeals = (props: LastDealsProps) => {
                                deal={deal}
                                mode={DealShowMode.Another}/>
             )}
+            <Paginator requestManager={requestManager} loadData={props.loadLastDeals}/>
         </div>
     )
 }

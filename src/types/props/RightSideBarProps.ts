@@ -12,3 +12,4 @@ export type RightSideBarPropsDispatch = {
     loadLast24Deals: (deals: Array<DealType>) => void
     addNotify: (notify: NotifyPropsOwn) => void
 }
+

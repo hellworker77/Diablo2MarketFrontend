@@ -9,9 +9,12 @@ import {
 } from "../../utilities/RequestManagers/TradingManagers/GetLastDayDealsRequestManager";
 import {Page} from "../../utilities/RequestManagers/Pages/Page";
 import {DealShowMode} from "../../types/props/DealProps";
+import {Route, RouterProps, useLocation} from "react-router-dom";
 
-const RightSideBar = (props: RightSideBarProps) => {
+const RightSideBar = (props: RightSideBarProps ) => {
     const pageSize = 30
+    const location = useLocation();
+    const {pathname} = location;
 
     const [requestManager, setRequestManager] =
         useState(new GetLastDayDealsRequestManager(props.addNotify,

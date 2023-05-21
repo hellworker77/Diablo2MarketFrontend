@@ -19,7 +19,7 @@ import {ItemShowMode} from "../../types/models/enums/ItemShowMode";
 import {DealShowMode} from "../../types/props/DealProps";
 
 const Profile = (props: ProfileProps) => {
-    const pageSize = 30
+    const pageSize = 2
 
     const loadMe = () => {
         if (props.token !== null) {

@@ -1,7 +1,7 @@
 import {AbstractRequestManager} from "../Abstract/AbstractRequestManager";
 import {BaseEndpoint} from "../BaseEndpoint";
 
-export class GetDealsCountRequestManager extends AbstractRequestManager<number, null>{
+export class GetLastDealsCountRequestManager extends AbstractRequestManager<number, null>{
     buildConfig(params: null = null): void {
         this.config = {
             method: this.method,

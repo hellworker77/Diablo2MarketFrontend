@@ -46,19 +46,14 @@ function Paginator<T, Params extends IPage>(props: PaginatorProps<T, Params>) {
             if (x == selected) {
                 return <button data-style="selected">{x}</button>
             }
-            if (x == 1) {
-                return <button onClick={() => props.requestManager.loadPage(x - 1, props.loadData)}>{x}</button>
-            }
-            if (x == numbers.length) {
+            if (x == 1 ||
+                x == numbers.length ||
+                Math.abs(selected - x) < range) {
                 return <button onClick={() => props.requestManager.loadPage(x - 1, props.loadData)}>{x}</button>
             }
             if (Math.abs(selected - x) == range) {
                 return <button data-style="disabled">...</button>
             }
-            if (Math.abs(selected - x) < range) {
-                return <button onClick={() => props.requestManager.loadPage(x - 1, props.loadData)}>{x}</button>
-            }
-
         }).ToArray()
 
     }

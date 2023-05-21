@@ -40,11 +40,9 @@ const TradeItem = (props: TradeItemProps) => {
         <div className={tradeItemModule.container}
             style={{gridAutoFlow:getContainerGridAutoFlow()}}>
             <div className={tradeItemModule.top_part}>
-                <div className={tradeItemModule.price}>
-                    <div className={uiModule.tinyBoxContainer}>
-                        <div>{props.item.price}</div>
-                        <img alt={"icon"} src={goldIcon}></img>
-                    </div>
+                <div className={uiModule.tinyBoxContainer}>
+                    <div>{props.item.price}</div>
+                    <img alt={"icon"} src={goldIcon}></img>
                 </div>
                 <NavLink to={`/itemShow`}
                          className={tradeItemModule.link}

@@ -14,11 +14,16 @@ import {
     SET_BASE_64_IMAGE,
     SetBase64ImageActionType
 } from "../types/reducerTypes/actionTypes/Media/SetBase64ImageActionType";
+import {
+    SET_ITEM_PHOTO_TO_UPLOAD,
+    SetItemPhotoToUploadActionType
+} from "../types/reducerTypes/actionTypes/Media/SetItemPhotoToUploadActionType";
 
 let initialState: MediaStateType = {
     selectedId: "",
     selected: null,
     medias: [],
+    itemPhotoToUpload: null,
     base64Image: null
 }
 
@@ -39,7 +44,6 @@ const MediaReducer = (state = initialState, action: GlobalMediaActionType): Medi
                     ...state
                 }
             }
-
         case DISPOSE_MEDIAS_ACTION_TYPE:
             return {
                 ...state,
@@ -53,11 +57,18 @@ const MediaReducer = (state = initialState, action: GlobalMediaActionType): Medi
                 selectedId: action.mediaId,
                 selected: state.medias.find(x=>x.id === action.mediaId) ?? state.selected
             }
-        case SET_BASE_64_IMAGE:
+        case SET_BASE_64_IMAGE:{
             return {
                 ...state,
                 base64Image: action.base64Image
             }
+        }
+        case SET_ITEM_PHOTO_TO_UPLOAD:{
+            return {
+                ...state,
+                itemPhotoToUpload: {...action.image}
+            }
+        }
         default:
             return {
                 ...state
@@ -79,6 +90,10 @@ export const selectMediaActionCreate = (mediaId: string): SelectMediaActionType 
 
 export const setBase64Image = (base64Image: string): SetBase64ImageActionType => ({
     type: SET_BASE_64_IMAGE, base64Image: base64Image
+})
+
+export const setItemPhotoToUploadActionCreate = (image:File): SetItemPhotoToUploadActionType => ({
+    type: SET_ITEM_PHOTO_TO_UPLOAD, image: image
 })
 
 export default MediaReducer;
