@@ -6,7 +6,7 @@ import React from "react";
 
 export type HeaderProps = {
     userName: string
-    balance: number
+    balance?: number
 }
 
 
@@ -18,12 +18,12 @@ export const Header = (props: HeaderProps) => {
                 <div className={`${uiModule.header} ${uiModule.row_content_container}`}>
                     {props.userName}
                 </div>
-                <div className={`${uiModule.header} ${uiModule.row_content_container}`}
-                     style={{margin: '0 0 0 auto'}}>
+                {props.balance? <div className={`${uiModule.header} ${uiModule.row_content_container}`}
+                                      style={{margin: '0 0 0 auto'}}>
                     {props.balance}
                     <FontAwesomeIcon icon={faSackDollar}
                                      style={{marginLeft: "10px"}}/>
-                </div>
+                </div> : ""}
             </div>
         </div>
     )

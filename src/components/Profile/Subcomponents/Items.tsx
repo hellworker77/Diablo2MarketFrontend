@@ -11,11 +11,9 @@ import {
 } from "../../../utilities/RequestManagers/Abstract/AbstractPageableRequestManager";
 import {IPage} from "../../../utilities/RequestManagers/Interfaces/IPage";
 import Paginator from "../../Paginator/Paginator";
-import {ItemShowMode} from "../../../types/models/enums/ItemShowMode";
 
 export type ItemsProps<manager extends AbstractPageableRequestManager<ItemType, IPage>> = {
     items: Array<ItemType> | null
-    itemShowMode: ItemShowMode
     manager: manager
     loadData: (data: ItemType[]) => void
 }
@@ -38,7 +36,6 @@ export const Items = <manager extends AbstractPageableRequestManager<ItemType, I
                 <div className={uiModule.scrollBar} style={{overflowY: "auto"}}>
                     {props.items?.map(item =>
                         <TradeItemContainer mode={TradeItemShowMode.InUser}
-                                            itemShowMode={props.itemShowMode}
                                             item={item}/>)}
                 </div>
             </div>

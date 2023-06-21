@@ -5,7 +5,7 @@ import {Token} from "../../TokenManager";
 import {NotifyPropsOwn} from "../../../types/props/NotificationProps";
 import {BaseEndpoint} from "../BaseEndpoint";
 
-export class GetMyDealsRequestManager extends AbstractPageableRequestManager<DealType, Page> {
+export class GetSuccessDealsRequestManager extends AbstractPageableRequestManager<DealType, Page> {
     constructor(notificationCallback: (notification: NotifyPropsOwn) => void,
                 source: string,
                 paramsTemplate: Page) {
@@ -19,6 +19,6 @@ export class GetMyDealsRequestManager extends AbstractPageableRequestManager<Dea
 
     protected method = "get";
     protected token: Token | undefined
-    protected readonly url = BaseEndpoint + "Deal/ownChunk"
+    protected readonly url = BaseEndpoint + "Deal/successDealsChunk"
 
 }

@@ -4,7 +4,6 @@ import {getExpiresTime} from "../../utilities/getExpiresTime";
 import uiModule from "../../styles/Ui.module.css"
 import dealPanelModule from "../../styles/Deal/Deal.module.css"
 import tradeItemModule from "../../styles/Trade/TradeItem.module.css";
-import {ItemShowMode} from "../../types/models/enums/ItemShowMode";
 import {NavLink} from "react-router-dom";
 import {DealStatusEnum} from "../../types/models/enums/DealStatusEnum";
 import {ApproveDealRequestManager} from "../../utilities/RequestManagers/TradingManagers/ApproveDealRequestManager";
@@ -55,7 +54,6 @@ const Deal = (props: DealProps) => {
                              style={{margin: "auto 0 auto 10px"}}
                              onClick={() => {
                                  props.selectItemId(props.deal.goods.id)
-                                 props.changeItemShowMode(ItemShowMode.View)
                              }}>
                         {props.deal.goods.name}
                     </NavLink>

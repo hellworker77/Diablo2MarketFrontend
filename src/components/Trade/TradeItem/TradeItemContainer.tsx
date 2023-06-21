@@ -4,8 +4,7 @@ import {TradeItemPropsDispatch, TradeItemPropsState} from "../../../types/props/
 import TradeItem from "./TradeItem";
 import {AppStateType} from "../../../redux/store";
 import {GlobalTradingActionType} from "../../../types/reducerTypes/actionTypes/GlobalTradingActionType";
-import {selectItemActionCreate, selectItemShowModeActionCreate} from "../../../redux/tradingReducer";
-import {ItemShowMode} from "../../../types/models/enums/ItemShowMode";
+import {selectItemActionCreate} from "../../../redux/tradingReducer";
 import {selectUserIdActionCreate} from "../../../redux/accountReducer";
 import {GlobalAccountActionType} from "../../../types/reducerTypes/actionTypes/GlobalAccountActionType";
 import {NotifyPropsOwn} from "../../../types/props/NotificationProps";
@@ -21,9 +20,6 @@ let mapDispatchToProps = (dispatch: Dispatch<GlobalTradingActionType | GlobalAcc
     return {
         selectItemId: (id: string) => {
             dispatch(selectItemActionCreate(id))
-        },
-        changeItemShowMode: (mode: ItemShowMode) => {
-            dispatch(selectItemShowModeActionCreate(mode))
         },
         selectUserId: (id: string) => {
             dispatch(selectUserIdActionCreate(id))

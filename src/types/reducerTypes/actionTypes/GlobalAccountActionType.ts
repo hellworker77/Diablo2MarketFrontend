@@ -11,6 +11,8 @@ import {LoadUserDealsActionType} from "./Account/LoadUserDealsActionType";
 import {LoadUserItemsActionType} from "./Account/LoadUserItemsActionType";
 import {LoadMyDealsActionType} from "./Account/LoadMyDealsActionType";
 import {LoadMyItemsActionType} from "./Account/LoadMyItemsActionType";
+import {LoadSuccessDealsActionType} from "./Account/LoadSuccessDealsActionType";
+import {LoadInProgressDealsActionType} from "./Account/LoadInProgressDealsActionType";
 
 export type GlobalAccountActionType =
     AddBalanceActionType |
@@ -18,6 +20,8 @@ export type GlobalAccountActionType =
     LoadMeActionType |
     LoadMyDealsActionType |
     LoadMyItemsActionType |
+    LoadSuccessDealsActionType |
+    LoadInProgressDealsActionType |
     SelectUserIdActionType |
     UpdateNameActionType |
     UpdateEmailActionType |

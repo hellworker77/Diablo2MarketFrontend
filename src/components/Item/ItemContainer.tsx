@@ -15,7 +15,6 @@ let mapStateToProps = (state: AppStateType) : ItemPropsState => {
     return {
         token: state.accountReducer.token,
         itemId: state.tradingReducer.selectedItemId,
-        mode: state.tradingReducer.itemShowMode,
         loadedItem: state.tradingReducer.loadedItem
     }
 }

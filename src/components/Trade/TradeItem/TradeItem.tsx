@@ -4,7 +4,6 @@ import tradeItemModule from "../../../styles/Trade/TradeItem.module.css"
 import uiModule from "../../../styles/Ui.module.css"
 import {NavLink} from "react-router-dom";
 import goldIcon from "../../../images/icons/golddrop.png"
-import {ItemShowMode} from "../../../types/models/enums/ItemShowMode";
 import {getExpiresTime} from "../../../utilities/getExpiresTime";
 import {ApplicationUserType} from "../../../types/models/ApplicationUserType";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -49,7 +48,6 @@ const TradeItem = (props: TradeItemProps) => {
                          style={{margin: "auto 0 auto 10px"}}
                          onClick={() => {
                              props.selectItemId(props.item.id)
-                             props.changeItemShowMode(props.itemShowMode)
                          }}>
                     {props.item.name}
                 </NavLink>

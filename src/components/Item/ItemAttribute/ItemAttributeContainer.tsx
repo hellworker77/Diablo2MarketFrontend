@@ -7,7 +7,6 @@ import ItemAttribute from "./ItemAttribute";
 
 let mapStateToProps = (state: AppStateType) : ItemAttributeState => {
     return {
-        mode: state.tradingReducer.itemShowMode
     }
 }
 let mapDispatchToProps = (dispatch : Dispatch<GlobalTradingActionType>) : ItemAttributeDispatch => {

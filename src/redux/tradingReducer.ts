@@ -4,11 +4,6 @@ import {
     SELECT_ITEM_ACTION_TYPE,
     SelectItemActionType
 } from "../types/reducerTypes/actionTypes/Trading/SelectItemActionType";
-import {ItemShowMode} from "../types/models/enums/ItemShowMode";
-import {
-    SELECT_ITEM_SHOW_MODE_ACTION_TYPE,
-    SelectItemShowModeActionType
-} from "../types/reducerTypes/actionTypes/Trading/SelectItemShowModeActionType";
 import {ItemType} from "../types/models/ItemType";
 import {LOAD_ITEM_ACTION_TYPE, LoadItemActionType} from "../types/reducerTypes/actionTypes/Trading/LoadItemActionType";
 import {
@@ -56,7 +51,6 @@ import {
 let initialState: TradingStateType = {
     items: [],
     selectedItemId: "",
-    itemShowMode: ItemShowMode.View,
     loadedItem: null,
     last24deals: [],
     deals: [],
@@ -72,11 +66,6 @@ const TradingReducer = (state = initialState, action: GlobalTradingActionType): 
             return {
                 ...state,
                 selectedItemId: action.id
-            }
-        case SELECT_ITEM_SHOW_MODE_ACTION_TYPE:
-            return {
-                ...state,
-                itemShowMode: action.mode
             }
         case LOAD_ITEM_ACTION_TYPE:
             return {
@@ -155,11 +144,6 @@ export const loadItemActionCreate = (item: ItemType): LoadItemActionType => ({
 export const selectItemActionCreate = (id: string): SelectItemActionType => ({
     type: SELECT_ITEM_ACTION_TYPE, id: id
 })
-
-export const selectItemShowModeActionCreate = (mode: ItemShowMode): SelectItemShowModeActionType => ({
-    type: SELECT_ITEM_SHOW_MODE_ACTION_TYPE, mode: mode
-})
-
 export const loadLast24HoursDealsActionCreate = (deals: Array<DealType>): LoadLast24HoursDealsActionType => ({
     type: LOAD_LAST_24_HOURS_ACTION_TYPE, deals: deals
 })

@@ -15,7 +15,9 @@ export type AccountStateType = {
 }
 
 export type UserGrantInfoType = {
-    user: ApplicationUserType | null,
-    userItems: Array<ItemType> | null,
-    userDeals: Array<DealType> | null,
+    user: ApplicationUserType | null
+    userItems: Array<ItemType> | null
+    userDeals: Array<DealType> | null
+    userInProgressDeals?: Array<DealType> | null
+    userSuccessDeals?: Array<DealType> | null
 }

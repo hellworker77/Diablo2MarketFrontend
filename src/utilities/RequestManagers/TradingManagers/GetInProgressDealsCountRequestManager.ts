@@ -6,7 +6,7 @@ type Params = {
     token: Token
 }
 
-export class GetMyDealsCountRequestManager extends AbstractRequestManager<number, Params>{
+export class GetInProgressDealsCountRequestManager extends AbstractRequestManager<number, Params>{
     buildConfig(params: Params): void {
         this.config = {
             method: this.method,
@@ -18,5 +18,5 @@ export class GetMyDealsCountRequestManager extends AbstractRequestManager<number
     }
 
     protected method = "get";
-    protected readonly url = BaseEndpoint + "Deal/ownDealsCount";
+    protected readonly url = BaseEndpoint + "Deal/inProgressDealsCount";
 }

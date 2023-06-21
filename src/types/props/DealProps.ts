@@ -1,5 +1,4 @@
 import {DealType} from "../models/DealType";
-import {ItemShowMode} from "../models/enums/ItemShowMode";
 import {Token} from "../../utilities/TokenManager";
 import {NotifyPropsOwn} from "./NotificationProps";
 
@@ -17,7 +16,6 @@ export type DealPropsState = {
 export type DealPropsDispatch = {
     selectItemId: (id: string) => void
     addNotify: (notify: NotifyPropsOwn) => void
-    changeItemShowMode: (mode: ItemShowMode) => void
 }
 
 export type DealPropsOwn = {

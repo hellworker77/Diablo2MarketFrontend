@@ -15,7 +15,6 @@ import {LastDeals} from "./Subcomponents/LastDeals";
 import {
     GetUserItemsCountRequestManager
 } from "../../utilities/RequestManagers/TradingManagers/GetUserItemsCountRequestManager";
-import {ItemShowMode} from "../../types/models/enums/ItemShowMode";
 import {DealShowMode} from "../../types/props/DealProps";
 
 
@@ -65,15 +64,14 @@ const User = (props: UserProps) => {
         <div className={userModule.wrapper}>
             <Picture medias={props.user?.profilePictures ?? []}/>
             <div className={userModule.container}>
-                <Header userName={props.user?.userName ?? ""} balance={props.user?.balance ?? 0}/>
+                <Header userName={props.user?.userName ?? ""}/>
+                <Items items={props.userItems}
+                       manager={getUserItemsRequestManager}
+                       loadData={props.loadUserItems}/>
                 <LastDeals deals={props.userDeals}
                            manager={getUserDealsRequestManager}
                            loadData={props.loadUserDeals}
                            mode={DealShowMode.Another}/>
-                <Items items={props.userItems}
-                       itemShowMode={ItemShowMode.Order}
-                       manager={getUserItemsRequestManager}
-                       loadData={props.loadUserItems}/>
             </div>
         </div>
     )
