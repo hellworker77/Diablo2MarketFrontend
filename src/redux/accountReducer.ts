@@ -50,6 +50,14 @@ import {
     LOAD_MY_ITEMS_ACTION_TYPE,
     LoadMyItemsActionType
 } from "../types/reducerTypes/actionTypes/Account/LoadMyItemsActionType";
+import {
+    LOAD_SUCCESS_DEALS_ACTION_TYPE,
+    LoadSuccessDealsActionType
+} from "../types/reducerTypes/actionTypes/Account/LoadSuccessDealsActionType";
+import {
+    LOAD_IN_PROGRESS_DEALS_ACTION_TYPE,
+    LoadInProgressDealsActionType
+} from "../types/reducerTypes/actionTypes/Account/LoadInProgressDealsActionType";
 
 let initialToken = TokenManager.load("account api email offline_access openid profile trading");
 
@@ -99,6 +107,8 @@ const AccountReducer = (state = initialState, action: GlobalAccountActionType) :
                 me: {
                     userDeals: state.me?.userDeals ?? null,
                     userItems: state.me?.userItems ?? null,
+                    userInProgressDeals: state.me?.userInProgressDeals ?? null,
+                    userSuccessDeals: state.me?.userSuccessDeals ?? null,
                     user: {...action.me}
                 }
             }
@@ -108,6 +118,8 @@ const AccountReducer = (state = initialState, action: GlobalAccountActionType) :
                 me : {
                     userDeals: [...action.deals],
                     userItems: state.me?.userItems ?? null,
+                    userInProgressDeals: state.me?.userInProgressDeals ?? null,
+                    userSuccessDeals: state.me?.userSuccessDeals ?? null,
                     user: state.me?.user ?? null
                 }
             }
@@ -117,6 +129,30 @@ const AccountReducer = (state = initialState, action: GlobalAccountActionType) :
                 me : {
                     userDeals: state.me?.userDeals ?? null,
                     userItems: [...action.items],
+                    userInProgressDeals: state.me?.userInProgressDeals ?? null,
+                    userSuccessDeals: state.me?.userSuccessDeals ?? null,
+                    user: state.me?.user ?? null
+                }
+            }
+        case LOAD_IN_PROGRESS_DEALS_ACTION_TYPE:
+            return {
+                ...state,
+                me : {
+                    userDeals: state.me?.userDeals ?? null,
+                    userItems: state.me?.userItems ?? null,
+                    userInProgressDeals: [...action.deals],
+                    userSuccessDeals: state.me?.userSuccessDeals ?? null,
+                    user: state.me?.user ?? null
+                }
+            }
+        case LOAD_SUCCESS_DEALS_ACTION_TYPE:
+            return {
+                ...state,
+                me : {
+                    userDeals: state.me?.userDeals ?? null,
+                    userItems: state.me?.userItems ?? null,
+                    userInProgressDeals: state.me?.userInProgressDeals ?? null,
+                    userSuccessDeals: [...action.deals],
                     user: state.me?.user ?? null
                 }
             }
@@ -183,6 +219,14 @@ export const selectUserIdActionCreate = (id: string) : SelectUserIdActionType =>
 
 export const loadMyDealsActionCreate = (deals: Array<DealType>) : LoadMyDealsActionType => ({
     type: LOAD_ME_DEALS_ACTION_TYPE, deals: deals
+})
+
+export const loadSuccessDealsActionCreate = (deals: Array<DealType>) : LoadSuccessDealsActionType => ({
+    type: LOAD_SUCCESS_DEALS_ACTION_TYPE, deals: deals
+})
+
+export const loadInProgressDealsActionCreate = (deals: Array<DealType>) : LoadInProgressDealsActionType => ({
+    type: LOAD_IN_PROGRESS_DEALS_ACTION_TYPE, deals: deals
 })
 
 export const loadMyItemsActionCreate = (items: Array<ItemType>): LoadMyItemsActionType => ({

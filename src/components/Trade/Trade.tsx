@@ -12,7 +12,6 @@ import {Page} from "../../utilities/RequestManagers/Pages/Page";
 import buttonEnabledIcon from '../../images/icons/skillcalc.png'
 import Paginator from "../Paginator/Paginator";
 import {GetItemsCountRequestManager} from "../../utilities/RequestManagers/TradingManagers/GetItemsCountRequestManager";
-import {ItemShowMode} from "../../types/models/enums/ItemShowMode";
 import {useNavigate} from "react-router-dom";
 
 const Trade = (props: TradeProps) => {
@@ -55,7 +54,6 @@ const Trade = (props: TradeProps) => {
                 {
                     props.items.map(x =>
                         <div key={x.id} className={tradeModule.item}><TradeItemContainer key={x.id}
-                                                                                         itemShowMode={ItemShowMode.Order}
                                                                                          mode={TradeItemShowMode.Detail}
                                                                                          item={x}/></div>
                     )}

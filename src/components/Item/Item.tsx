@@ -7,11 +7,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import {useNavigate} from "react-router-dom";
 import {GetItemByIdRequestManager} from "../../utilities/RequestManagers/TradingManagers/GetItemByIdRequestManager";
-import {ItemShowMode} from "../../types/models/enums/ItemShowMode";
 import {CreateDealRequestManager} from "../../utilities/RequestManagers/TradingManagers/CreateDealRequestManager";
 import ImageSwiperContainer from "../ImageSwipper/ImageSwiperContainer";
 import {MediaTypeEnum} from "../../types/models/enums/MediaTypeEnum";
 import {LoadSource} from "../../types/props/ImageSwiper";
+import ItemButtonsContainer from "./ItemButtonsContainer";
 
 
 const Item = (props: ItemProps) => {
@@ -40,6 +40,9 @@ const Item = (props: ItemProps) => {
             createDealRequestManager.queryData().then()
         }
     }
+
+
+
     return (
         <div>
             <FontAwesomeIcon icon={faArrowLeft}
@@ -63,22 +66,7 @@ const Item = (props: ItemProps) => {
                                                 itemAttribute={attribute}/>
                     )
                 }
-                {
-                    props.mode === ItemShowMode.Order ?
-                        <div className={uiModule.button}
-                             style={{margin: "0 10px 10px auto"}}
-                             onClick={() => createDeal()}>
-                            <div className={uiModule.green}>
-                                <div style={{margin: "auto auto auto 5px"}}>
-                                    <FontAwesomeIcon icon={faCartShopping}/>
-                                </div>
-                                <div style={{margin: "auto 5px auto auto"}}>
-                                    Order
-                                </div>
-                            </div>
-                        </div> :
-                        ""
-                }
+                <ItemButtonsContainer />
             </div>
 
         </div>

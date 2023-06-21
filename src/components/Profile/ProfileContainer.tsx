@@ -6,7 +6,8 @@ import {ProfilePropsDispatch, ProfilePropsState} from "../../types/props/Profile
 import {GlobalAccountActionType} from "../../types/reducerTypes/actionTypes/GlobalAccountActionType";
 import {ApplicationUserType} from "../../types/models/ApplicationUserType";
 import {
-    loadMeActionCreate, loadMyDealsActionCreate, loadMyItemsActionCreate,
+    loadInProgressDealsActionCreate,
+    loadMeActionCreate, loadMyDealsActionCreate, loadMyItemsActionCreate, loadSuccessDealsActionCreate,
     loadUserActionCreate,
     loadUserDealsActionCreate,
     loadUserItemsActionCreate
@@ -22,7 +23,9 @@ let mapStateToProps = (state: AppStateType): ProfilePropsState => {
         token: state.accountReducer.token,
         me: state.accountReducer.me?.user ?? null,
         myItems: state.accountReducer.me?.userItems ?? null,
-        myDeals: state.accountReducer.me?.userDeals ?? null
+        myDeals: state.accountReducer.me?.userDeals ?? null,
+        mySuccessDeals: state.accountReducer.me?.userSuccessDeals ?? null,
+        myInProgressDeals: state.accountReducer.me?.userInProgressDeals ?? null,
     }
 }
 
@@ -33,6 +36,12 @@ let mapDispatchToProps = (dispatch: Dispatch<GlobalAccountActionType | GlobalNot
         },
         loadMyDeals: (deals: Array<DealType>) => {
             dispatch(loadMyDealsActionCreate(deals))
+        },
+        loadMySuccessDeals: (deals: Array<DealType>) => {
+            dispatch(loadSuccessDealsActionCreate(deals))
+        },
+        loadMyInProgressDeals: (deals: Array<DealType>) => {
+            dispatch(loadInProgressDealsActionCreate(deals))
         },
         loadMyItems: (items: Array<ItemType>) => {
             dispatch(loadMyItemsActionCreate(items))

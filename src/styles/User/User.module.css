@@ -14,10 +14,6 @@
     grid-template-rows: auto 1fr;
     row-gap: 15px;
     column-gap: 10px;
-    grid-template-areas:
-    "top"
-    "left"
-    "right";
 }
 
 .frame_top,
@@ -32,19 +28,6 @@
     margin: 15px 10px;
     overflow-y: auto;
 }
-
-.frame_top {
-    grid-area: top;
-}
-
-.frame_left {
-    grid-area: left;
-}
-
-.frame_right {
-    grid-area: right;
-}
-
 .frame_left,
 .frame_right{
     display: grid;
